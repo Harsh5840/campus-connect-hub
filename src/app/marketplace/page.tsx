@@ -1,5 +1,8 @@
+"use client";
+
 import { useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -10,8 +13,8 @@ import sampleBook from "@/assets/sample-book.jpg";
 import sampleCalculator from "@/assets/sample-calculator.jpg";
 import sampleSnacks from "@/assets/sample-snacks.jpg";
 
-const Marketplace = () => {
-  const [searchParams] = useSearchParams();
+export default function Marketplace() {
+  const searchParams = useSearchParams();
   const defaultTab = searchParams.get("tab") || "buy";
   const [activeTab, setActiveTab] = useState(defaultTab);
 
@@ -51,7 +54,7 @@ const Marketplace = () => {
               Discover items from your campus community
             </p>
           </div>
-          <Link to="/create-listing">
+          <Link href="/create-listing">
             <Button className="rounded-full">
               <Plus className="h-4 w-4 mr-2" />
               Sell Item
@@ -92,7 +95,7 @@ const Marketplace = () => {
           <TabsContent value="sell" className="space-y-6">
             <div className="text-center py-20">
               <p className="text-muted-foreground mb-4">You haven't listed any items yet</p>
-              <Link to="/create-listing">
+              <Link href="/create-listing">
                 <Button>Create Your First Listing</Button>
               </Link>
             </div>
@@ -100,7 +103,7 @@ const Marketplace = () => {
 
           <TabsContent value="rent" className="space-y-6">
             <div className="flex justify-end mb-4">
-              <Link to="/create-rent-request">
+              <Link href="/create-rent-request">
                 <Button variant="outline">
                   <Plus className="h-4 w-4 mr-2" />
                   New Request
@@ -127,6 +130,4 @@ const Marketplace = () => {
       </div>
     </div>
   );
-};
-
-export default Marketplace;
+}

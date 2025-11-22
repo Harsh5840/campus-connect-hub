@@ -1,24 +1,26 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import { ShoppingBag, Clock, Package } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 
-const Landing = () => {
+export default function Landing() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4">
-        <div 
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: `url(${heroImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
+        <div className="absolute inset-0 opacity-5">
+          <Image
+            src={heroImage}
+            alt="Hero background"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
         <div className="container mx-auto text-center relative z-10">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
             Buy • Sell • Rent<br />
@@ -28,17 +30,17 @@ const Landing = () => {
             Your campus marketplace, re-imagined.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link to="/marketplace">
+            <Link href="/marketplace">
               <Button size="lg" className="h-12 px-8 rounded-full">
                 Browse Marketplace
               </Button>
             </Link>
-            <Link to="/marketplace?tab=night-market">
+            <Link href="/marketplace?tab=night-market">
               <Button size="lg" variant="secondary" className="h-12 px-8 rounded-full">
                 Night Market
               </Button>
             </Link>
-            <Link to="/create-listing">
+            <Link href="/create-listing">
               <Button size="lg" variant="outline" className="h-12 px-8 rounded-full">
                 Post Item
               </Button>
@@ -91,7 +93,7 @@ const Landing = () => {
           <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
             Join your campus community and discover a smarter way to buy, sell, and share.
           </p>
-          <Link to="/auth">
+          <Link href="/auth">
             <Button size="lg" className="h-12 px-8 rounded-full">
               Get Started
             </Button>
@@ -107,6 +109,4 @@ const Landing = () => {
       </footer>
     </div>
   );
-};
-
-export default Landing;
+}

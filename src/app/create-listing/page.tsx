@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -8,20 +9,21 @@ import { Card } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Navbar } from "@/components/Navbar";
 import { ArrowLeft, Upload, X } from "lucide-react";
+import { useState } from "react";
 
-const CreateListing = () => {
+export default function CreateListing() {
   const [images, setImages] = useState<string[]>([]);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files) {
       const newImages = Array.from(files).map(file => URL.createObjectURL(file));
-      setImages([...images, ...newImages]);
+      setImages(prev => [...prev, ...newImages].slice(0, 5));
     }
   };
 
   const removeImage = (index: number) => {
-    setImages(images.filter((_, i) => i !== index));
+    setImages(prev => prev.filter((_, i) => i !== index));
   };
 
   return (
@@ -30,7 +32,7 @@ const CreateListing = () => {
       
       <div className="container mx-auto px-4 pt-24 pb-20">
         <div className="max-w-3xl mx-auto">
-          <Link to="/marketplace" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-8">
+          <Link href="/marketplace" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-8">
             <ArrowLeft className="h-4 w-4" />
             Back to marketplace
           </Link>
@@ -45,46 +47,54 @@ const CreateListing = () => {
           <Card className="p-8">
             <form className="space-y-6">
               <div className="space-y-2">
-                <Label>Upload Images</Label>
-                <div className="grid grid-cols-4 gap-4">
-                  {images.map((image, index) => (
-                    <div key={index} className="relative aspect-square rounded-lg overflow-hidden border border-border">
-                      <img src={image} alt={`Upload ${index + 1}`} className="w-full h-full object-cover" />
-                      <button
-                        type="button"
-                        onClick={() => removeImage(index)}
-                        className="absolute top-2 right-2 h-6 w-6 rounded-full bg-background/80 flex items-center justify-center hover:bg-background"
-                      >
-                        <X className="h-4 w-4" />
-                      </button>
-                    </div>
-                  ))}
-                  {images.length < 4 && (
-                    <label className="aspect-square rounded-lg border-2 border-dashed border-border hover:border-foreground/50 cursor-pointer flex flex-col items-center justify-center gap-2 transition-colors">
-                      <Upload className="h-6 w-6 text-muted-foreground" />
-                      <span className="text-xs text-muted-foreground">Upload</span>
-                      <input
-                        type="file"
-                        accept="image/*"
-                        multiple
-                        className="hidden"
-                        onChange={handleImageUpload}
-                      />
-                    </label>
-                  )}
+                <Label>Images (Max 5)</Label>
+                <div className="border-2 border-dashed border-border rounded-3xl p-8 text-center hover:border-primary/50 transition-colors">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handleImageUpload}
+                    className="hidden"
+                    id="image-upload"
+                  />
+                  <label htmlFor="image-upload" className="cursor-pointer">
+                    <Upload className="h-8 w-8 mx-auto mb-4 text-muted-foreground" />
+                    <p className="text-sm text-muted-foreground mb-1">
+                      Click to upload or drag and drop
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      PNG, JPG up to 10MB
+                    </p>
+                  </label>
                 </div>
+                {images.length > 0 && (
+                  <div className="grid grid-cols-5 gap-4 mt-4">
+                    {images.map((img, index) => (
+                      <div key={index} className="relative aspect-square rounded-2xl overflow-hidden border border-border">
+                        <img src={img} alt={`Upload ${index + 1}`} className="w-full h-full object-cover" />
+                        <button
+                          type="button"
+                          onClick={() => removeImage(index)}
+                          className="absolute top-2 right-2 bg-background/80 backdrop-blur-sm rounded-full p-1 hover:bg-background"
+                        >
+                          <X className="h-4 w-4" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="title">Title</Label>
-                <Input id="title" placeholder="Engineering Textbook" />
+                <Input id="title" placeholder="e.g., Scientific Calculator" />
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="description">Description</Label>
                 <Textarea 
                   id="description" 
-                  placeholder="Describe your item in detail..."
+                  placeholder="Describe the item, condition, and any details..."
                   rows={4}
                 />
               </div>
@@ -97,9 +107,9 @@ const CreateListing = () => {
                       <SelectValue placeholder="Select category" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="books">Books</SelectItem>
+                      <SelectItem value="textbooks">Textbooks</SelectItem>
                       <SelectItem value="electronics">Electronics</SelectItem>
-                      <SelectItem value="furniture">Furniture</SelectItem>
+                      <SelectItem value="stationery">Stationery</SelectItem>
                       <SelectItem value="clothing">Clothing</SelectItem>
                       <SelectItem value="other">Other</SelectItem>
                     </SelectContent>
@@ -124,12 +134,12 @@ const CreateListing = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="price">Price (₹)</Label>
-                  <Input id="price" type="number" placeholder="500" />
+                  <Label htmlFor="price">Price</Label>
+                  <Input id="price" type="number" placeholder="₹100" />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="location">Location / Hostel</Label>
+                  <Label htmlFor="location">Location</Label>
                   <Select>
                     <SelectTrigger>
                       <SelectValue placeholder="Select hostel" />
@@ -153,7 +163,7 @@ const CreateListing = () => {
                 <Button type="submit" className="flex-1" size="lg">
                   Publish Listing
                 </Button>
-                <Link to="/marketplace" className="flex-1">
+                <Link href="/marketplace" className="flex-1">
                   <Button type="button" variant="outline" className="w-full" size="lg">
                     Cancel
                   </Button>
@@ -165,6 +175,4 @@ const CreateListing = () => {
       </div>
     </div>
   );
-};
-
-export default CreateListing;
+}
