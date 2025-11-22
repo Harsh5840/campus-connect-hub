@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -8,14 +10,14 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Navbar } from "@/components/Navbar";
 import { ArrowLeft, Calendar } from "lucide-react";
 
-const CreateRentRequest = () => {
+export default function CreateRentRequest() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       
       <div className="container mx-auto px-4 pt-24 pb-20">
         <div className="max-w-3xl mx-auto">
-          <Link to="/marketplace?tab=rent" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-8">
+          <Link href="/marketplace?tab=rent" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-8">
             <ArrowLeft className="h-4 w-4" />
             Back to rent requests
           </Link>
@@ -96,7 +98,7 @@ const CreateRentRequest = () => {
                 <Button type="submit" className="flex-1" size="lg">
                   Publish Request
                 </Button>
-                <Link to="/marketplace?tab=rent" className="flex-1">
+                <Link href="/marketplace?tab=rent" className="flex-1">
                   <Button type="button" variant="outline" className="w-full" size="lg">
                     Cancel
                   </Button>
@@ -108,6 +110,4 @@ const CreateRentRequest = () => {
       </div>
     </div>
   );
-};
-
-export default CreateRentRequest;
+}

@@ -1,9 +1,13 @@
+"use client";
+
+import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MapPin } from "lucide-react";
+import { StaticImageData } from "next/image";
 
 interface ProductCardProps {
-  image: string;
+  image: string | StaticImageData;
   title: string;
   price: string;
   location: string;
@@ -13,11 +17,12 @@ interface ProductCardProps {
 export const ProductCard = ({ image, title, price, location, condition }: ProductCardProps) => {
   return (
     <Card className="group cursor-pointer overflow-hidden border border-border hover:shadow-lg transition-all duration-300">
-      <div className="aspect-square overflow-hidden bg-muted">
-        <img
+      <div className="aspect-square overflow-hidden bg-muted relative">
+        <Image
           src={image}
           alt={title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-300"
         />
       </div>
       <div className="p-4 space-y-2">
