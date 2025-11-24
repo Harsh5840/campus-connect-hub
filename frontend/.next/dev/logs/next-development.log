@@ -1,0 +1,530 @@
+[00:00:21.322] Server  LOG     
+[00:00:21.323] Server  LOG        We detected TypeScript in your project and reconfigured your tsconfig.json file for you.
+[00:00:21.323] Server  LOG        The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:
+
+[00:00:21.325] Server  LOG        	- include was updated to add '.next/dev/types/**/*.ts'
+[00:00:21.326] Server  LOG     
+[00:00:21.326] Server  LOG        The following mandatory changes were made to your tsconfig.json:
+
+[00:00:21.327] Server  LOG        	- jsx was set to react-jsx (next.js uses the React automatic runtime)
+[00:00:21.327] Server  LOG     
+[00:00:26.181] Server  LOG      ✓ Ready in 16.1s
+[00:10:47.236] Server  LOG      ○ Compiling / ...
+[00:10:54.901] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:55.483] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="inter_5972bc34-module__OU16Qa__className antialiased"
+-                           jf-observer-attached="true"
+                          >
+                            ...
+                              <div data-slot="accordion" className="w-full" data-orientation="vertical" ...>
+                                ...
+                                  <SlotClone data-radix-collection-item="" ref={function}>
+                                    <CollapsibleTrigger aria-disabled={undefined} data-orientation="vertical" ...>
+                                      <Primitive.button type="button" aria-controls="radix-_R_j..." aria-expanded={false} ...>
+                                        <button
+                                          type="button"
+                                          aria-controls="radix-_R_j6indlb_"
+                                          aria-expanded={false}
+                                          data-state="closed"
+                                          data-disabled={undefined}
+                                          disabled={undefined}
+                                          aria-disabled={undefined}
+                                          data-orientation="vertical"
+                                          id="radix-_R_36indlb_"
+                                          data-slot="accordion-trigger"
+                                          className={"focus-visible:border-ring focus-visible:ring-ring/50 flex flex-..."}
+                                          data-radix-collection-item=""
+                                          onClick={function handleEvent}
+                                          ref={function}
+-                                         jf-ext-button-ct="how do i verify my college email?"
+                                        >
+                                ...
+                                  <SlotClone data-radix-collection-item="" ref={function}>
+                                    <CollapsibleTrigger aria-disabled={undefined} data-orientation="vertical" ...>
+                                      <Primitive.button type="button" aria-controls="radix-_R_l..." aria-expanded={false} ...>
+                                        <button
+                                          type="button"
+                                          aria-controls="radix-_R_l6indlb_"
+                                          aria-expanded={false}
+                                          data-state="closed"
+                                          data-disabled={undefined}
+                                          disabled={undefined}
+                                          aria-disabled={undefined}
+                                          data-orientation="vertical"
+                                          id="radix-_R_56indlb_"
+                                          data-slot="accordion-trigger"
+                                          className={"focus-visible:border-ring focus-visible:ring-ring/50 flex flex-..."}
+                                          data-radix-collection-item=""
+                                          onClick={function handleEvent}
+                                          ref={function}
+-                                         jf-ext-button-ct="is it safe to buy/sell on campusthrift?"
+                                        >
+                                ...
+                                  <SlotClone data-radix-collection-item="" ref={function}>
+                                    <CollapsibleTrigger aria-disabled={undefined} data-orientation="vertical" ...>
+                                      <Primitive.button type="button" aria-controls="radix-_R_n..." aria-expanded={false} ...>
+                                        <button
+                                          type="button"
+                                          aria-controls="radix-_R_n6indlb_"
+                                          aria-expanded={false}
+                                          data-state="closed"
+                                          data-disabled={undefined}
+                                          disabled={undefined}
+                                          aria-disabled={undefined}
+                                          data-orientation="vertical"
+                                          id="radix-_R_76indlb_"
+                                          data-slot="accordion-trigger"
+                                          className={"focus-visible:border-ring focus-visible:ring-ring/50 flex flex-..."}
+                                          data-radix-collection-item=""
+                                          onClick={function handleEvent}
+                                          ref={function}
+-                                         jf-ext-button-ct="how does the night market work?"
+                                        >
+                                ...
+                                  <SlotClone data-radix-collection-item="" ref={function}>
+                                    <CollapsibleTrigger aria-disabled={undefined} data-orientation="vertical" ...>
+                                      <Primitive.button type="button" aria-controls="radix-_R_p..." aria-expanded={false} ...>
+                                        <button
+                                          type="button"
+                                          aria-controls="radix-_R_p6indlb_"
+                                          aria-expanded={false}
+                                          data-state="closed"
+                                          data-disabled={undefined}
+                                          disabled={undefined}
+                                          aria-disabled={undefined}
+                                          data-orientation="vertical"
+                                          id="radix-_R_96indlb_"
+                                          data-slot="accordion-trigger"
+                                          className={"focus-visible:border-ring focus-visible:ring-ring/50 flex flex-..."}
+                                          data-radix-collection-item=""
+                                          onClick={function handleEvent}
+                                          ref={function}
+-                                         jf-ext-button-ct="what can i rent or borrow?"
+                                        >
+                            ...
+                  ...
+
+[00:10:55.702] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:10:55.702] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:10:55.702] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763983457641}
+[00:12:11.419] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/marketplace color: rgb(120, 120, 120) color: inherit {"dp":"/marketplace","o":"http://localhost:3000/marketplace","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763983533281}
+[00:12:20.345] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sell color: rgb(120, 120, 120) color: inherit {"dp":"/sell","o":"http://localhost:3000/sell","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763983542178}
+[00:12:31.837] Server  LOG      ✓ Compiled in 957ms
+[00:13:10.101] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:13:10.564] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <SegmentViewNode type="page" pagePath="sell/page.tsx">
+      <SegmentTrieNode>
+      <ClientPageRoot Component={function SellPage} serverProvidedParams={{...}}>
+        <SellPage params={Promise} searchParams={Promise}>
+          <div className="flex min-h...">
+            <SiteHeader>
+            <main className="flex-1 bg-...">
+              <div className="container ...">
+                <div>
+                <Card>
+                  <div data-slot="card" className="bg-card te...">
+                    <CardHeader>
+                    <CardContent>
+                      <div data-slot="card-content" className="px-6">
+                        <form className="space-y-6">
+                          <div>
+                          <div className="space-y-2">
+                            <Label>
+                            <Input id="title" placeholder="e.g., Intr..." required={true}>
+                              <input
+                                type={undefined}
+                                data-slot="input"
+                                className="file:text-foreground placeholder:text-muted-foreground selection:bg-primary..."
+                                id="title"
+                                placeholder="e.g., Introduction to Algorithms Textbook"
+                                required={true}
+-                               jf-ext-cache-id="0"
+                              >
+                          <div className="space-y-2">
+                            <Label>
+                            <Textarea id="description" placeholder="Describe y..." rows={4} required={true}>
+                              <textarea
+                                data-slot="textarea"
+                                className="border-input placeholder:text-muted-foreground focus-visible:border-ring fo..."
+                                id="description"
+                                placeholder="Describe your item, its condition, and any other relevant details..."
+                                rows={4}
+                                required={true}
+-                               jf-ext-cache-id="6"
+                              >
+                          <div className="grid gap-4...">
+                            ...
+                              ...
+                                <Slot ref={function}>
+                                  <SlotClone ref={function}>
+                                    <Primitive.button type="button" role="combobox" aria-controls="radix-_R_9..." ...>
+                                      <button
+                                        type="button"
+                                        role="combobox"
+                                        aria-controls="radix-_R_9il5esndlb_"
+                                        aria-expanded={false}
+                                        aria-required={true}
+                                        aria-autocomplete="none"
+                                        dir="ltr"
+                                        data-state="closed"
+                                        disabled={false}
+                                        data-disabled={undefined}
+                                        data-placeholder=""
+                                        data-slot="select-trigger"
+                                        data-size="default"
+                                        className={"border-input data-[placeholder]:text-muted-foreground [&_svg:not(..."}
+                                        id="category"
+                                        onClick={function handleEvent}
+                                        onPointerDown={function handleEvent}
+                                        onKeyDown={function handleEvent}
+                                        ref={function}
+-                                       jf-ext-button-ct="select category"
+                                      >
+                              ...
+                                <Primitive.span asChild={true} ref={null} style={{position:"...", ...}}>
+                                  <Slot style={{position:"...", ...}} ref={null}>
+                                    <SlotClone style={{position:"...", ...}} ref={null}>
+                                      <select
+                                        aria-hidden={true}
+                                        required={true}
+                                        tabIndex={-1}
+                                        name={undefined}
+                                        autoComplete={undefined}
+                                        onChange={function onChange}
+                                        disabled={undefined}
+                                        form={undefined}
+                                        ref={function}
+                                        defaultValue={undefined}
+                                        style={{position:"absolute",border:0,width:1,height:1,padding:0,margin:-1,overflow:"hidden",clip:"rect(0, 0...", ...}}
+-                                       jf-ext-cache-id="3"
+                                      >
+                            ...
+                              ...
+                                <Slot ref={function}>
+                                  <SlotClone ref={function}>
+                                    <Primitive.button type="button" role="combobox" aria-controls="radix-_R_a..." ...>
+                                      <button
+                                        type="button"
+                                        role="combobox"
+                                        aria-controls="radix-_R_ail5esndlb_"
+                                        aria-expanded={false}
+                                        aria-required={true}
+                                        aria-autocomplete="none"
+                                        dir="ltr"
+                                        data-state="closed"
+                                        disabled={false}
+                                        data-disabled={undefined}
+                                        data-placeholder=""
+                                        data-slot="select-trigger"
+                                        data-size="default"
+                                        className={"border-input data-[placeholder]:text-muted-foreground [&_svg:not(..."}
+                                        id="condition"
+                                        onClick={function handleEvent}
+                                        onPointerDown={function handleEvent}
+                                        onKeyDown={function handleEvent}
+                                        ref={function}
+-                                       jf-ext-button-ct="select condition"
+                                      >
+                              ...
+                                <Primitive.span asChild={true} ref={null} style={{position:"...", ...}}>
+                                  <Slot style={{position:"...", ...}} ref={null}>
+                                    <SlotClone style={{position:"...", ...}} ref={null}>
+                                      <select
+                                        aria-hidden={true}
+                                        required={true}
+                                        tabIndex={-1}
+                                        name={undefined}
+                                        autoComplete={undefined}
+                                        onChange={function onChange}
+                                        disabled={undefined}
+                                        form={undefined}
+                                        ref={function}
+                                        defaultValue={undefined}
+                                        style={{position:"absolute",border:0,width:1,height:1,padding:0,margin:-1,overflow:"hidden",clip:"rect(0, 0...", ...}}
+-                                       jf-ext-cache-id="4"
+                                      >
+                          <div className="grid gap-4...">
+                            <div className="space-y-2">
+                              <Label>
+                              <Input id="price" type="number" placeholder="500" required={true}>
+                                <input
+                                  type="number"
+                                  data-slot="input"
+                                  className="file:text-foreground placeholder:text-muted-foreground selection:bg-prima..."
+                                  id="price"
+                                  placeholder="500"
+                                  required={true}
+-                                 jf-ext-cache-id="1"
+                                >
+                            ...
+                              ...
+                                <Slot ref={function}>
+                                  <SlotClone ref={function}>
+                                    <Primitive.button type="button" role="combobox" aria-controls="radix-_R_a..." ...>
+                                      <button
+                                        type="button"
+                                        role="combobox"
+                                        aria-controls="radix-_R_aml5esndlb_"
+                                        aria-expanded={false}
+                                        aria-required={true}
+                                        aria-autocomplete="none"
+                                        dir="ltr"
+                                        data-state="closed"
+                                        disabled={false}
+                                        data-disabled={undefined}
+                                        data-placeholder=""
+                                        data-slot="select-trigger"
+                                        data-size="default"
+                                        className={"border-input data-[placeholder]:text-muted-foreground [&_svg:not(..."}
+                                        id="location"
+                                        onClick={function handleEvent}
+                                        onPointerDown={function handleEvent}
+                                        onKeyDown={function handleEvent}
+                                        ref={function}
+-                                       jf-ext-button-ct="select location"
+                                      >
+                              ...
+                                <Primitive.span asChild={true} ref={null} style={{position:"...", ...}}>
+                                  <Slot style={{position:"...", ...}} ref={null}>
+                                    <SlotClone style={{position:"...", ...}} ref={null}>
+                                      <select
+                                        aria-hidden={true}
+                                        required={true}
+                                        tabIndex={-1}
+                                        name={undefined}
+                                        autoComplete={undefined}
+                                        onChange={function onChange}
+                                        disabled={undefined}
+                                        form={undefined}
+                                        ref={function}
+                                        defaultValue={undefined}
+                                        style={{position:"absolute",border:0,width:1,height:1,padding:0,margin:-1,overflow:"hidden",clip:"rect(0, 0...", ...}}
+-                                       jf-ext-cache-id="5"
+                                      >
+                          <div className="space-y-2">
+                            <Label>
+                            <Input id="whatsapp" type="tel" placeholder="+91 98765 ...">
+                              <input
+                                type="tel"
+                                data-slot="input"
+                                className="file:text-foreground placeholder:text-muted-foreground selection:bg-primary..."
+                                id="whatsapp"
+                                placeholder="+91 98765 43210"
+-                               jf-ext-cache-id="2"
+                              >
+                            ...
+                          <div className="flex gap-3...">
+                            <Button type="submit" className="flex-1" size="lg">
+                              <button
+                                data-slot="button"
+                                className={"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm f..."}
+                                type="submit"
+-                               jf-ext-button-ct="publish listing"
+                              >
++                               Publish Listing
+                            ...
+    ...
+
+[00:13:10.675] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:13:10.675] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/sell","route":"/sell"}
+[00:13:10.675] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sell color: rgb(120, 120, 120) color: inherit {"dp":"/sell","o":"http://localhost:3000/sell","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763983592612}
+[00:13:28.440] Server  LOG      ✓ Compiled in 542ms
+[00:13:33.042] Server  LOG      ✓ Compiled in 469ms
+[00:13:39.067] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763983620996}
+[00:13:46.208] Server  LOG      ✓ Compiled in 458ms
+[00:13:47.810] Server  LOG      ✓ Compiled in 460ms
+[00:14:24.793] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/signup color: rgb(120, 120, 120) color: inherit {"dp":"/signup","o":"http://localhost:3000/signup","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763983666723}
+[00:14:50.493] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:14:50.763] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <RenderFromTemplateContext>
+      <ScrollAndFocusHandler segmentPath={[...]}>
+        <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+          <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+            <LoadingBoundary name="signup/" loading={null}>
+              <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+                <RedirectBoundary>
+                  <RedirectErrorBoundary router={{...}}>
+                    <InnerLayoutRouter url="/signup" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                      <SegmentViewNode type="page" pagePath="signup/pag...">
+                        <SegmentTrieNode>
+                        <SignupPage>
+                          <div className="flex min-h...">
+                            <Card>
+                              <div data-slot="card" className="bg-card te...">
+                                <div>
+                                <CardContent>
+                                  <div data-slot="card-content" className="px-6 space...">
+                                    <Button>
+                                      <button
+                                        data-slot="button"
+                                        className={"inline-flex items-center justify-center whitespace-nowrap text-sm..."}
+-                                       jf-ext-button-ct="continue with google"
+                                      >
+                                    <div>
+                                    <form className="space-y-4">
+                                      <div className="space-y-2">
+                                        <Label>
+                                        <Input>
+                                          <input
+                                            type="text"
+                                            data-slot="input"
+                                            className="file:text-foreground placeholder:text-muted-foreground selectio..."
+                                            id="name"
+                                            placeholder="Rahul Kumar"
+                                            required={true}
+-                                           jf-ext-cache-id="0"
+                                          >
+                                      <div className="space-y-2">
+                                        <Label>
+                                        <Input>
+                                          <input
+                                            type="email"
+                                            data-slot="input"
+                                            className="file:text-foreground placeholder:text-muted-foreground selectio..."
+                                            id="email"
+                                            placeholder="you@college.edu"
+                                            required={true}
+-                                           jf-ext-cache-id="1"
+                                          >
+                                      <div>
+                                      <div>
+                                      <Button>
+                                        <button
+                                          data-slot="button"
+                                          className={"inline-flex items-center justify-center gap-2 whitespace-nowrap..."}
+                                          type="submit"
+-                                         jf-ext-button-ct="create account"
+                                        >
++                                         Create Account
+                                    ...
+                      ...
+                    ...
+          ...
+
+[00:14:50.763] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:14:50.763] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/signup","route":"/signup"}
+[00:14:50.763] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/signup color: rgb(120, 120, 120) color: inherit {"dp":"/signup","o":"http://localhost:3000/signup","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763983692682}
+[00:15:21.716] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763983723652}
+[00:15:33.075] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:15:33.871] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <RenderFromTemplateContext>
+      <ScrollAndFocusHandler segmentPath={[...]}>
+        <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+          <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+            <LoadingBoundary name="login/" loading={null}>
+              <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+                <RedirectBoundary>
+                  <RedirectErrorBoundary router={{...}}>
+                    <InnerLayoutRouter url="/login" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                      <SegmentViewNode type="page" pagePath="login/page...">
+                        <SegmentTrieNode>
+                        <LoginPage>
+                          <div className="flex min-h...">
+                            <Card>
+                              <div data-slot="card" className="bg-card te...">
+                                <div>
+                                <CardContent>
+                                  <div data-slot="card-content" className="px-6 space...">
+                                    <Button>
+                                      <button
+                                        data-slot="button"
+                                        className={"inline-flex items-center justify-center whitespace-nowrap text-sm..."}
+-                                       jf-ext-button-ct="continue with google"
+                                      >
+                                    <div>
+                                    <form className="space-y-4">
+                                      <div className="space-y-2">
+                                        <Label>
+                                        <Input>
+                                          <input
+                                            type="email"
+                                            data-slot="input"
+                                            className="file:text-foreground placeholder:text-muted-foreground selectio..."
+                                            id="email"
+                                            placeholder="you@college.edu"
+                                            required={true}
+-                                           jf-ext-cache-id="0"
+                                          >
+                                      <div>
+                                      <Button>
+                                        <button
+                                          data-slot="button"
+                                          className={"inline-flex items-center justify-center gap-2 whitespace-nowrap..."}
+                                          type="submit"
+-                                         jf-ext-button-ct="sign in"
+                                        >
++                                         Sign in
+                                    ...
+                      ...
+                    ...
+          ...
+
+[00:15:33.871] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:15:33.871] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
+[00:15:33.871] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763983735798}
