@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -13,30 +13,40 @@ import sampleSnacks from "@/assets/sample-snacks.jpg";
 export default function Marketplace() {
 	const defaultTab = "buy";
 	const [activeTab, setActiveTab] = useState(defaultTab);
+	const [searchQuery, setSearchQuery] = useState("");
 
-	const sampleProducts = [
-		{
-			image: sampleBook,
-			title: "Engineering Mathematics Textbook",
-			price: "₹500",
-			location: "Block A, Hostel 3",
-			condition: "Good",
-		},
-		{
-			image: sampleCalculator,
-			title: "Scientific Calculator",
-			price: "₹200",
-			location: "Block B, Hostel 1",
-			condition: "Like New",
-		},
-		{
-			image: sampleSnacks,
-			title: "Maggi & Snacks Bundle",
-			price: "₹80",
-			location: "Block C, Hostel 2",
-			condition: "New",
-		},
-	];
+	const sampleProducts = useMemo(
+		() => [
+			{
+				image: sampleBook,
+				title: "Engineering Mathematics Textbook",
+				price: "₹500",
+				location: "Block A, Hostel 3",
+				condition: "Good",
+			},
+			{
+				image: sampleCalculator,
+				title: "Scientific Calculator",
+				price: "₹200",
+				location: "Block B, Hostel 1",
+				condition: "Like New",
+			},
+			{
+				image: sampleSnacks,
+				title: "Maggi & Snacks Bundle",
+				price: "₹80",
+				location: "Block C, Hostel 2",
+				condition: "New",
+			},
+		],
+		[],
+	);
+
+	const filteredProducts = useMemo(() => {
+		return sampleProducts.filter((product) =>
+			product.title.toLowerCase().includes(searchQuery.toLowerCase()),
+		);
+	}, [searchQuery, sampleProducts]);
 
 	return (
 		<div className="min-h-screen bg-background">
@@ -62,9 +72,12 @@ export default function Marketplace() {
 						<Input 
 							placeholder="Search for items..." 
 							className="pl-10 h-11"
+							value={searchQuery}
+							onChange={(e) => setSearchQuery(e.target.value)}
+							aria-label="Search products"
 						/>
 					</div>
-					<Button variant="outline" className="h-11">
+					<Button variant="outline" className="h-11" aria-label="Open filters">
 						<Filter className="h-4 w-4 mr-2" />
 						Filters
 					</Button>
@@ -76,21 +89,25 @@ export default function Marketplace() {
 						<TabsTrigger value="rent">Rent Requests</TabsTrigger>
 						<TabsTrigger value="night-market">Night Market</TabsTrigger>
 					</TabsList>
-					<TabsContent value="buy" className="space-y-6">
-						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-							{sampleProducts.map((product, index) => (
-								<ProductCard key={index} {...product} />
-							))}
-						</div>
-					</TabsContent>
-					<TabsContent value="sell" className="space-y-6">
-						<div className="text-center py-20">
-							<p className="text-muted-foreground mb-4">You haven't listed any items yet</p>
-							<a href="/create-listing">
-								<Button>Create Your First Listing</Button>
-							</a>
-						</div>
-					</TabsContent>
+						{filteredProducts.length > 0 ? (
+							<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+								{filteredProducts.map((product, index) => (
+									<ProductCard key={index} {...product} />
+								))}
+							</div>
+						) : (
+							<div className="text-center py-20">
+								<p className="text-muted-foreground">No items found matching your search</p>
+							</div>
+						)}
+				<TabsContent value="sell" className="space-y-6">
+					<div className="text-center py-20">
+						<p className="text-muted-foreground mb-4">You haven&apos;t listed any items yet</p>
+						<a href="/create-listing">
+							<Button>Create Your First Listing</Button>
+						</a>
+					</div>
+				</TabsContent>
 					<TabsContent value="rent" className="space-y-6">
 						<div className="flex justify-end mb-4">
 							<a href="/create-rent-request">

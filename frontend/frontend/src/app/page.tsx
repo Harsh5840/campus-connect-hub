@@ -9,7 +9,7 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <Navbar />
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-4">
+      <section className="relative pt-32 pb-20 px-4" id="hero" aria-labelledby="hero-title">
         <div 
           className="absolute inset-0 opacity-5"
           style={{
@@ -19,7 +19,7 @@ export default function Home() {
           }}
         />
         <div className="container mx-auto text-center relative z-10">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+          <h1 id="hero-title" className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
             Buy • Sell • Rent<br />
             Night Market
           </h1>
@@ -46,7 +46,7 @@ export default function Home() {
         </div>
       </section>
       {/* Features */}
-      <section className="py-20 px-4 bg-muted/30">
+      <section className="py-20 px-4 bg-muted/30" id="features" aria-labelledby="features-title">
         <div className="container mx-auto">
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <div className="text-center space-y-4">
@@ -80,9 +80,9 @@ export default function Home() {
         </div>
       </section>
       {/* CTA */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4" id="cta" aria-labelledby="cta-title">
         <div className="container mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 id="cta-title" className="text-3xl md:text-4xl font-bold mb-6">
             Ready to start trading?
           </h2>
           <p className="text-muted-foreground mb-8 max-w-xl mx-auto">

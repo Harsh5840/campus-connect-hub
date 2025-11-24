@@ -1,25 +1,46 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Navbar } from "@/components/Navbar";
-import { Chrome, ArrowLeft } from "lucide-react";
+import { Chrome, ArrowLeft, AlertCircle } from "lucide-react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 export default function Auth() {
 	const [isLogin, setIsLogin] = useState(true);
+	const [errors, setErrors] = useState<Record<string, string>>({});
+	const [isLoading, setIsLoading] = useState(false);
+
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		setErrors({});
+		setIsLoading(true);
+
+		try {
+			// Add form validation and API call here
+			const formData = new FormData(e.currentTarget);
+			console.log("Form submitted:", Object.fromEntries(formData));
+			// TODO: Call authentication API
+		} catch {
+			setErrors({ submit: "An error occurred. Please try again." });
+		} finally {
+			setIsLoading(false);
+		}
+	};
 
 	return (
 		<div className="min-h-screen bg-background">
 			<Navbar />
 			<div className="container mx-auto px-4 pt-32 pb-20">
 				<div className="max-w-md mx-auto">
-					<a href="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-8">
+					<Link href="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-8 transition-colors">
 						<ArrowLeft className="h-4 w-4" />
 						Back to home
-					</a>
+					</Link>
 					<Card className="p-8 space-y-6">
 						<div className="text-center space-y-2">
 							<h1 className="text-2xl font-bold">
@@ -29,7 +50,21 @@ export default function Auth() {
 								{isLogin ? "Sign in to continue" : "Join the campus marketplace"}
 							</p>
 						</div>
-						<Button variant="outline" className="w-full h-11" size="lg">
+
+						{errors.submit && (
+							<Alert variant="destructive">
+								<AlertCircle className="h-4 w-4" />
+								<AlertDescription>{errors.submit}</AlertDescription>
+							</Alert>
+						)}
+
+						<Button
+							variant="outline"
+							className="w-full h-11"
+							size="lg"
+							type="button"
+							disabled={isLoading}
+						>
 							<Chrome className="h-5 w-5 mr-2" />
 							Continue with Google
 						</Button>
@@ -39,46 +74,93 @@ export default function Auth() {
 								or continue with email
 							</span>
 						</div>
-						<form className="space-y-4">
+						<form className="space-y-4" onSubmit={handleSubmit}>
 							{!isLogin && (
 								<div className="space-y-2">
 									<Label htmlFor="name">Full Name</Label>
-									<Input id="name" placeholder="John Doe" />
+									<Input
+										id="name"
+										name="name"
+										placeholder="John Doe"
+										disabled={isLoading}
+										aria-invalid={!!errors.name}
+									/>
+									{errors.name && <p className="text-sm text-destructive">{errors.name}</p>}
 								</div>
 							)}
 							<div className="space-y-2">
 								<Label htmlFor="email">College Email</Label>
-								<Input id="email" type="email" placeholder="you@college.edu" />
+								<Input
+									id="email"
+									name="email"
+									type="email"
+									placeholder="you@college.edu"
+									disabled={isLoading}
+									aria-invalid={!!errors.email}
+									required
+								/>
+								{errors.email && <p className="text-sm text-destructive">{errors.email}</p>}
 							</div>
 							<div className="space-y-2">
 								<Label htmlFor="password">Password</Label>
-								<Input id="password" type="password" placeholder="••••••••" />
+								<Input
+									id="password"
+									name="password"
+									type="password"
+									placeholder="••••••••"
+									disabled={isLoading}
+									aria-invalid={!!errors.password}
+									required
+								/>
+								{errors.password && <p className="text-sm text-destructive">{errors.password}</p>}
 							</div>
 							{!isLogin && (
 								<div className="space-y-2">
 									<Label htmlFor="confirm-password">Confirm Password</Label>
-									<Input id="confirm-password" type="password" placeholder="••••••••" />
+									<Input
+										id="confirm-password"
+										name="confirmPassword"
+										type="password"
+										placeholder="••••••••"
+										disabled={isLoading}
+										aria-invalid={!!errors.confirmPassword}
+										required
+									/>
+									{errors.confirmPassword && (
+										<p className="text-sm text-destructive">{errors.confirmPassword}</p>
+									)}
 								</div>
 							)}
 							{isLogin && (
 								<div className="text-right">
-									<button type="button" className="text-xs text-muted-foreground hover:text-foreground">
+									<button
+										type="button"
+										className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+									>
 										Forgot password?
 									</button>
 								</div>
 							)}
-							<Button type="submit" className="w-full h-11" size="lg">
-								{isLogin ? "Sign In" : "Create Account"}
+							<Button
+								type="submit"
+								className="w-full h-11"
+								size="lg"
+								disabled={isLoading}
+							>
+								{isLoading ? "Loading..." : isLogin ? "Sign In" : "Create Account"}
 							</Button>
 						</form>
 						<div className="text-center text-sm">
 							<span className="text-muted-foreground">
-								{isLogin ? "Don't have an account? " : "Already have an account? "}
+								{isLogin ? "Don&apos;t have an account? " : "Already have an account? "}
 							</span>
 							<button
 								type="button"
-								onClick={() => setIsLogin(!isLogin)}
-								className="font-medium hover:underline"
+								onClick={() => {
+									setIsLogin(!isLogin);
+									setErrors({});
+								}}
+								className="font-medium hover:underline transition-colors"
 							>
 								{isLogin ? "Sign up" : "Sign in"}
 							</button>
