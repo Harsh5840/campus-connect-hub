@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/src/contexts/AuthContext'
 import { SiteHeader } from '@/src/components/site-header'
@@ -23,7 +23,8 @@ import Link from 'next/link'
 import api from '@/src/lib/api'
 import { useToast } from '@/src/hooks/use-toast'
 
-export default function ListingDetailsPage({ params }: { params: { id: string } }) {
+export default function ListingDetailsPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = React.use(params)
   const { user, isLoading: authLoading } = useAuth()
   const router = useRouter()
   const { toast } = useToast()
@@ -41,7 +42,7 @@ export default function ListingDetailsPage({ params }: { params: { id: string } 
   useEffect(() => {
     const fetchListing = async () => {
       try {
-        const response = await api.get(`/listings/${params.id}`)
+        const response = await api.get(`/listings/${resolvedParams.id}`)
         setListing(response.data)
       } catch (error: any) {
         toast({
@@ -55,10 +56,10 @@ export default function ListingDetailsPage({ params }: { params: { id: string } 
       }
     }
 
-    if (user && params.id) {
+    if (user && resolvedParams.id) {
       fetchListing()
     }
-  }, [user, params.id])
+  }, [user, resolvedParams.id, router, toast])
 
   if (authLoading || loading) {
     return (
