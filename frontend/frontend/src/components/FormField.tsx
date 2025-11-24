@@ -1,8 +1,8 @@
 import { Label } from "@/components/ui/label";
-import { Input, InputProps } from "@/components/ui/input";
+import { Input } from "@/components/ui/input";
 import React from "react";
 
-interface FormFieldProps extends InputProps {
+interface FormFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	label: string;
 	error?: string;
 	helperText?: string;
