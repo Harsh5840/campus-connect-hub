@@ -16,12 +16,6 @@ export default function LandingPage() {
   const { user, isLoading } = useAuth();
   const router = useRouter();
 
-  useEffect(() => {
-    if (!isLoading && user) {
-      router.push('/marketplace');
-    }
-  }, [user, isLoading, router]);
-
   if (isLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
@@ -33,11 +27,6 @@ export default function LandingPage() {
     );
   }
 
-  if (user) {
-    return null; // Will redirect
-  }
-
-  const categories = [
   const categories = [
     { name: "Books & Notes", icon: BookOpen, count: "240+" },
     { name: "Electronics", icon: Laptop, count: "180+" },

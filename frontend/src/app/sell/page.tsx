@@ -14,11 +14,24 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/src/components/ui/card"
 import { Upload, X } from "lucide-react"
 import Link from "next/link"
+import api from "@/src/lib/api"
+import { useToast } from "@/src/hooks/use-toast"
 
 export default function SellPage() {
   const { user, isLoading } = useAuth();
   const router = useRouter();
+  const { toast } = useToast();
   const [images, setImages] = useState<string[]>([])
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    category: '',
+    condition: '',
+    price: '',
+    location: '',
+    whatsapp: ''
+  })
 
   useEffect(() => {
     if (!isLoading && !user) {
@@ -53,6 +66,45 @@ export default function SellPage() {
     setImages(images.filter((_, i) => i !== index))
   }
 
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      const listingData = {
+        title: formData.title,
+        description: formData.description,
+        category: formData.category,
+        condition: formData.condition,
+        price: parseFloat(formData.price),
+        location: formData.location,
+        whatsapp: formData.whatsapp || null,
+        imageUrls: images // For now, just store the blob URLs
+      }
+
+      await api.post('/listings', listingData)
+
+      toast({
+        title: "Success!",
+        description: "Your listing has been created successfully.",
+      })
+
+      router.push('/marketplace')
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.response?.data?.error || "Failed to create listing. Please try again.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
@@ -71,7 +123,7 @@ export default function SellPage() {
               <CardDescription>Fill in the details to sell your item</CardDescription>
             </CardHeader>
             <CardContent>
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 {/* Image Upload */}
                 <div className="space-y-3">
                   <Label>Photos</Label>
@@ -106,7 +158,13 @@ export default function SellPage() {
                 {/* Title */}
                 <div className="space-y-2">
                   <Label htmlFor="title">Title</Label>
-                  <Input id="title" placeholder="e.g., Introduction to Algorithms Textbook" required />
+                  <Input 
+                    id="title" 
+                    placeholder="e.g., Introduction to Algorithms Textbook" 
+                    value={formData.title}
+                    onChange={(e) => handleInputChange('title', e.target.value)}
+                    required 
+                  />
                 </div>
 
                 {/* Description */}
@@ -116,6 +174,8 @@ export default function SellPage() {
                     id="description"
                     placeholder="Describe your item, its condition, and any other relevant details..."
                     rows={4}
+                    value={formData.description}
+                    onChange={(e) => handleInputChange('description', e.target.value)}
                     required
                   />
                 </div>
@@ -124,7 +184,7 @@ export default function SellPage() {
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="category">Category</Label>
-                    <Select required>
+                    <Select value={formData.category} onValueChange={(value) => handleInputChange('category', value)} required>
                       <SelectTrigger id="category">
                         <SelectValue placeholder="Select category" />
                       </SelectTrigger>
@@ -141,7 +201,7 @@ export default function SellPage() {
 
                   <div className="space-y-2">
                     <Label htmlFor="condition">Condition</Label>
-                    <Select required>
+                    <Select value={formData.condition} onValueChange={(value) => handleInputChange('condition', value)} required>
                       <SelectTrigger id="condition">
                         <SelectValue placeholder="Select condition" />
                       </SelectTrigger>
@@ -160,12 +220,19 @@ export default function SellPage() {
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="price">Price (₹)</Label>
-                    <Input id="price" type="number" placeholder="500" required />
+                    <Input 
+                      id="price" 
+                      type="number" 
+                      placeholder="500" 
+                      value={formData.price}
+                      onChange={(e) => handleInputChange('price', e.target.value)}
+                      required 
+                    />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="location">Location / Hostel</Label>
-                    <Select required>
+                    <Select value={formData.location} onValueChange={(value) => handleInputChange('location', value)} required>
                       <SelectTrigger id="location">
                         <SelectValue placeholder="Select location" />
                       </SelectTrigger>
@@ -184,14 +251,20 @@ export default function SellPage() {
                 {/* WhatsApp */}
                 <div className="space-y-2">
                   <Label htmlFor="whatsapp">WhatsApp Number (Optional)</Label>
-                  <Input id="whatsapp" type="tel" placeholder="+91 98765 43210" />
+                  <Input 
+                    id="whatsapp" 
+                    type="tel" 
+                    placeholder="+91 98765 43210"
+                    value={formData.whatsapp}
+                    onChange={(e) => handleInputChange('whatsapp', e.target.value)}
+                  />
                   <p className="text-xs text-muted-foreground">Buyers can contact you directly on WhatsApp</p>
                 </div>
 
                 {/* Submit */}
                 <div className="flex gap-3 pt-4">
-                  <Button type="submit" className="flex-1" size="lg">
-                    Publish Listing
+                  <Button type="submit" className="flex-1" size="lg" disabled={isSubmitting}>
+                    {isSubmitting ? "Publishing..." : "Publish Listing"}
                   </Button>
                   <Button type="button" variant="outline" size="lg" asChild>
                     <Link href="/marketplace">Cancel</Link>

@@ -30,7 +30,10 @@ export const listingSchema = z.object({
   category: z.string().min(1),
   price: z.number().positive(),
   condition: z.string().min(1),
+  location: z.string().min(1),
+  whatsapp: z.string().optional(),
   negotiable: z.boolean().default(false),
+  imageUrls: z.array(z.string()).default([]),
 });
 
 export const updateListingSchema = z.object({
@@ -39,6 +42,8 @@ export const updateListingSchema = z.object({
   category: z.string().min(1).optional(),
   price: z.number().positive().optional(),
   condition: z.string().min(1).optional(),
+  location: z.string().min(1).optional(),
+  whatsapp: z.string().optional(),
   negotiable: z.boolean().optional(),
   status: z.enum(['AVAILABLE', 'SOLD']).optional(),
 });
@@ -73,10 +78,10 @@ export const updateNightMarketPostSchema = z.object({
 export const searchListingsSchema = z.object({
   query: z.string().optional(),
   category: z.string().optional(),
-  minPrice: z.string().transform(Number).optional(),
-  maxPrice: z.string().transform(Number).optional(),
+  minPrice: z.coerce.number().optional(),
+  maxPrice: z.coerce.number().optional(),
   hostel: z.string().optional(),
-  sortBy: z.enum(['newest', 'price_asc', 'price_desc']).default('newest'),
-  page: z.string().transform(Number).default(1),
-  limit: z.string().transform(Number).default(10),
+  sortBy: z.enum(['newest', 'price_asc', 'price_desc']).optional().default('newest'),
+  page: z.coerce.number().optional().default(1),
+  limit: z.coerce.number().optional().default(10),
 });

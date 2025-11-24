@@ -1,0 +1,12 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/auth/page": "app/auth/page.js",
+  "/login/page": "app/login/page.js",
+  "/marketplace/page": "app/marketplace/page.js",
+  "/night-market/page": "app/night-market/page.js",
+  "/page": "app/page.js",
+  "/rent-request/page": "app/rent-request/page.js",
+  "/sell/page": "app/sell/page.js",
+  "/signup/page": "app/signup/page.js"
+}

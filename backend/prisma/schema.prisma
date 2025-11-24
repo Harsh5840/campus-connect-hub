@@ -51,6 +51,8 @@ model Listing {
   category    String
   price       Float
   condition   String
+  location    String        @default("Campus") // Hostel or location
+  whatsapp    String?       // WhatsApp contact
   negotiable  Boolean       @default(false)
   imageUrls   String[]      // Array of image URLs
   qrUrl       String?       // QR code URL

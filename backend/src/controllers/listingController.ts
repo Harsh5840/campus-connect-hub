@@ -20,7 +20,8 @@ export class ListingController {
       const result = await ListingService.getListings(filters);
       res.json(result);
     } catch (error: any) {
-      res.status(500).json({ error: error.message });
+      console.error('Error fetching listings:', error);
+      res.status(500).json({ error: error.message || 'Failed to fetch listings' });
     }
   }
 

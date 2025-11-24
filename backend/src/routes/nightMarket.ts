@@ -9,9 +9,9 @@ router.get('/', NightMarketController.getNightMarketPosts);
 router.get('/:id', NightMarketController.getNightMarketPostById);
 
 // Protected routes
+router.get('/user/posts', verifyToken, NightMarketController.getUserNightMarketPosts);
 router.post('/', verifyToken, NightMarketController.createNightMarketPost);
 router.put('/:id', verifyToken, NightMarketController.updateNightMarketPost);
 router.delete('/:id', verifyToken, NightMarketController.deleteNightMarketPost);
-router.get('/user/posts', verifyToken, NightMarketController.getUserNightMarketPosts);
 
 export default router;

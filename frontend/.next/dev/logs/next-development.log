@@ -1,17 +1,120 @@
-[00:00:21.322] Server  LOG     
-[00:00:21.323] Server  LOG        We detected TypeScript in your project and reconfigured your tsconfig.json file for you.
-[00:00:21.323] Server  LOG        The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:
+[00:00:01.077] Server  LOG      ✓ Ready in 714ms
+[00:00:05.198] Server  LOG      ○ Compiling /signup ...
+[00:00:06.447] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:08.115] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:08.115] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:08.115] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764016470816}
+[00:00:10.595] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/marketplace color: rgb(120, 120, 120) color: inherit {"dp":"/marketplace","o":"http://localhost:3000/marketplace","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764016474185}
+[00:00:11.329] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764016474915}
+[00:00:21.554] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:21.725] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
 
-[00:00:21.325] Server  LOG        	- include was updated to add '.next/dev/types/**/*.ts'
-[00:00:21.326] Server  LOG     
-[00:00:21.326] Server  LOG        The following mandatory changes were made to your tsconfig.json:
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
 
-[00:00:21.327] Server  LOG        	- jsx was set to react-jsx (next.js uses the React automatic runtime)
-[00:00:21.327] Server  LOG     
-[00:00:26.181] Server  LOG      ✓ Ready in 16.1s
-[00:10:47.236] Server  LOG      ○ Compiling / ...
-[00:10:54.901] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:10:55.483] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/login" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="login/page...">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function LoginPage} serverProvidedParams={{...}}>
+                <LoginPage params={Promise} searchParams={Promise}>
+                  <div className="flex min-h...">
+                    <Card className="w-full max...">
+                      <div data-slot="card" className="bg-card te...">
+                        <CardHeader>
+                        <CardContent className="space-y-4">
+                          <div data-slot="card-content" className="px-6 space...">
+                            <Button variant="outline" className="w-full gap..." size="lg">
+                              <button
+                                data-slot="button"
+                                className={"inline-flex items-center justify-center whitespace-nowrap text-sm font-me..."}
+-                               jf-ext-button-ct="continue with google"
+                              >
+                            <div>
+                            <form onSubmit={function handleSubmit} className="space-y-4">
+                              <div className="space-y-2">
+                                <Label>
+                                <Input id="email" type="email" placeholder="you@colleg..." value="" ...>
+                                  <input
+                                    type="email"
+                                    data-slot="input"
+                                    className="file:text-foreground placeholder:text-muted-foreground selection:bg-pri..."
+                                    id="email"
+                                    placeholder="you@college.edu"
+                                    value=""
+                                    onChange={function onChange}
+                                    required={true}
+-                                   jf-ext-cache-id="0"
+                                  >
+                              <div>
+                              <Button type="submit" className="w-full" size="lg" disabled={false}>
+                                <button
+                                  data-slot="button"
+                                  className={"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm..."}
+                                  type="submit"
+                                  disabled={false}
+-                                 jf-ext-button-ct="sign in"
+                                >
++                                 Sign in
+                            ...
+            ...
+          ...
+
+[00:00:21.843] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:21.843] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
+[00:00:21.843] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764016485439}
+[00:00:51.941] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/signup color: rgb(120, 120, 120) color: inherit {"dp":"/signup","o":"http://localhost:3000/signup","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764016515532}
+[00:01:10.371] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/marketplace color: rgb(120, 120, 120) color: inherit {"dp":"/marketplace","o":"http://localhost:3000/marketplace","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764016533957}
+[00:01:34.345] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sell color: rgb(120, 120, 120) color: inherit {"dp":"/sell","o":"http://localhost:3000/sell","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764016557873}
+[00:02:03.949] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:04.409] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:02:04.409] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/sell","route":"/sell"}
+[00:02:04.409] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sell color: rgb(120, 120, 120) color: inherit {"dp":"/sell","o":"http://localhost:3000/sell","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764016588006}
+[00:02:10.943] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/marketplace color: rgb(120, 120, 120) color: inherit {"dp":"/marketplace","o":"http://localhost:3000/marketplace","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764016594530}
+[00:02:26.891] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sell color: rgb(120, 120, 120) color: inherit {"dp":"/sell","o":"http://localhost:3000/sell","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764016610316}
+[00:02:55.675] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:56.255] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:02:56.255] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/sell","route":"/sell"}
+[00:02:56.255] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sell color: rgb(120, 120, 120) color: inherit {"dp":"/sell","o":"http://localhost:3000/sell","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764016639847}
+[00:03:43.954] Server  LOG      ✓ Compiled in 172ms
+[00:03:49.559] Server  LOG      ✓ Compiled in 123ms
+[00:03:57.147] Server  LOG      ✓ Compiled in 117ms
+[00:04:01.694] Server  LOG      ✓ Compiled in 84ms
+[00:04:03.196] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/marketplace color: rgb(120, 120, 120) color: inherit {"dp":"/marketplace","o":"http://localhost:3000/marketplace","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764016706777}
+[00:04:06.307] Server  LOG      ✓ Compiled in 98ms
+[00:04:08.016] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/night-market color: rgb(120, 120, 120) color: inherit {"dp":"/night-market","o":"http://localhost:3000/night-market","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764016711600}
+[00:04:11.049] Server  LOG      ✓ Compiled in 103ms
+[00:04:12.344] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sell color: rgb(120, 120, 120) color: inherit {"dp":"/sell","o":"http://localhost:3000/sell","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764016715876}
+[00:04:15.416] Server  LOG      ✓ Compiled in 93ms
+[00:04:15.809] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/marketplace color: rgb(120, 120, 120) color: inherit {"dp":"/marketplace","o":"http://localhost:3000/marketplace","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764016719351}
+[00:04:19.658] Server  LOG      ✓ Compiled in 16ms
+[00:04:19.952] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:20.504] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:04:20.504] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/rent-requests","route":"/rent-requests"}
+[00:04:20.504] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/rent-requests color: rgb(120, 120, 120) color: inherit {"dp":"/rent-requests","o":"http://localhost:3000/rent-requests","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764016724087}
+[00:04:23.101] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:23.517] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:04:23.517] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/marketplace","route":"/marketplace"}
+[00:04:23.517] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/marketplace color: rgb(120, 120, 120) color: inherit {"dp":"/marketplace","o":"http://localhost:3000/marketplace","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764016727115}
+[00:04:41.823] Server  LOG      ✓ Compiled in 78ms
+[00:04:47.505] Server  LOG      ✓ Compiled in 118ms
+[00:04:48.108] Browser ERROR   Failed to fetch listings: {"code":"ERR_BAD_RESPONSE","config":{"adapter":["xhr","http","fetch"],"allowAbsoluteUrls":true,"baseURL":"http://localhost:5000","env":{},"headers":{"Accept":"application/json, text/plain, */*","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlkbHdjazgwMDAwYzhmaWdyeWFkNDl5IiwiaWF0IjoxNzY0MDE2NTMzLCJleHAiOjE3NjQwMTc0MzN9.DQ4OxDVdoQ_Wi0WAMqFIXvfFUMHGqgFC0wx-cfXjQcE","Content-Type":"application/json"},"maxBodyLength":-1,"maxContentLength":-1,"method":"get","timeout":0,"transformRequest":[null],"transformResponse":[null],"transitional":{"clarifyTimeoutError":false,"forcedJSONParsing":true,"silentJSONParsing":true},"url":"/listings","xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN"},"message":"Request failed with status code 500","name":"AxiosError","stack":"AxiosError: Request failed with status code 500\n    at settle (http://localhost:3000/_next/static/chunks/node_modules_d14da46b._.js:3943:16)\n    at XMLHttpRequest.onloadend (http://localhost:3000/_next/static/chunks/node_modules_d14da46b._.js:4458:174)\n    at Axios.request (http://localhost:3000/_next/static/chunks/node_modules_d14da46b._.js:5262:49)\n    at async MarketplacePage.useEffect.fetchListings (http://localhost:3000/_next/static/chunks/src_df0e9e22._.js?id=%255Bproject%255D%252Fsrc%252Fapp%252Fmarketplace%252Fpage.tsx+%255Bapp-client%255D+%2528ecmascript%2529:65:42)","status":500}
+[00:04:51.830] Server  LOG      ✓ Compiled in 74ms
+[00:04:58.782] Server  LOG      ✓ Compiled in 139ms
+[00:05:07.764] Server  LOG      ✓ Compiled in 81ms
+[00:08:57.816] Server  LOG      ✓ Compiled in 731ms
+[00:08:58.452] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:08:59.102] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
 
 - A server/client branch `if (typeof window !== 'undefined')`.
 - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
@@ -29,7 +132,7 @@ It can also happen if the client has a browser extension installed which messes 
         <ReplaySsrOnlyErrors>
         <DevRootHTTPAccessFallbackBoundary>
           <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
-            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+            <HTTPAccessFallbackErrorBoundary pathname="/marketplace" notFound={<NotAllowedRootHTTPFallbackError>} ...>
               <RedirectBoundary>
                 <RedirectErrorBoundary router={{...}}>
                   <Head>
@@ -39,492 +142,84 @@ It can also happen if the client has a browser extension installed which messes 
                       <link>
                       <script>
                       <script>
+                      <script>
                       <RootLayout>
                         <html lang="en">
                           <body
                             className="inter_5972bc34-module__OU16Qa__className antialiased"
 -                           jf-observer-attached="true"
                           >
-                            ...
-                              <div data-slot="accordion" className="w-full" data-orientation="vertical" ...>
-                                ...
-                                  <SlotClone data-radix-collection-item="" ref={function}>
-                                    <CollapsibleTrigger aria-disabled={undefined} data-orientation="vertical" ...>
-                                      <Primitive.button type="button" aria-controls="radix-_R_j..." aria-expanded={false} ...>
-                                        <button
-                                          type="button"
-                                          aria-controls="radix-_R_j6indlb_"
-                                          aria-expanded={false}
-                                          data-state="closed"
-                                          data-disabled={undefined}
-                                          disabled={undefined}
-                                          aria-disabled={undefined}
-                                          data-orientation="vertical"
-                                          id="radix-_R_36indlb_"
-                                          data-slot="accordion-trigger"
-                                          className={"focus-visible:border-ring focus-visible:ring-ring/50 flex flex-..."}
-                                          data-radix-collection-item=""
-                                          onClick={function handleEvent}
-                                          ref={function}
--                                         jf-ext-button-ct="how do i verify my college email?"
-                                        >
-                                ...
-                                  <SlotClone data-radix-collection-item="" ref={function}>
-                                    <CollapsibleTrigger aria-disabled={undefined} data-orientation="vertical" ...>
-                                      <Primitive.button type="button" aria-controls="radix-_R_l..." aria-expanded={false} ...>
-                                        <button
-                                          type="button"
-                                          aria-controls="radix-_R_l6indlb_"
-                                          aria-expanded={false}
-                                          data-state="closed"
-                                          data-disabled={undefined}
-                                          disabled={undefined}
-                                          aria-disabled={undefined}
-                                          data-orientation="vertical"
-                                          id="radix-_R_56indlb_"
-                                          data-slot="accordion-trigger"
-                                          className={"focus-visible:border-ring focus-visible:ring-ring/50 flex flex-..."}
-                                          data-radix-collection-item=""
-                                          onClick={function handleEvent}
-                                          ref={function}
--                                         jf-ext-button-ct="is it safe to buy/sell on campusthrift?"
-                                        >
-                                ...
-                                  <SlotClone data-radix-collection-item="" ref={function}>
-                                    <CollapsibleTrigger aria-disabled={undefined} data-orientation="vertical" ...>
-                                      <Primitive.button type="button" aria-controls="radix-_R_n..." aria-expanded={false} ...>
-                                        <button
-                                          type="button"
-                                          aria-controls="radix-_R_n6indlb_"
-                                          aria-expanded={false}
-                                          data-state="closed"
-                                          data-disabled={undefined}
-                                          disabled={undefined}
-                                          aria-disabled={undefined}
-                                          data-orientation="vertical"
-                                          id="radix-_R_76indlb_"
-                                          data-slot="accordion-trigger"
-                                          className={"focus-visible:border-ring focus-visible:ring-ring/50 flex flex-..."}
-                                          data-radix-collection-item=""
-                                          onClick={function handleEvent}
-                                          ref={function}
--                                         jf-ext-button-ct="how does the night market work?"
-                                        >
-                                ...
-                                  <SlotClone data-radix-collection-item="" ref={function}>
-                                    <CollapsibleTrigger aria-disabled={undefined} data-orientation="vertical" ...>
-                                      <Primitive.button type="button" aria-controls="radix-_R_p..." aria-expanded={false} ...>
-                                        <button
-                                          type="button"
-                                          aria-controls="radix-_R_p6indlb_"
-                                          aria-expanded={false}
-                                          data-state="closed"
-                                          data-disabled={undefined}
-                                          disabled={undefined}
-                                          aria-disabled={undefined}
-                                          data-orientation="vertical"
-                                          id="radix-_R_96indlb_"
-                                          data-slot="accordion-trigger"
-                                          className={"focus-visible:border-ring focus-visible:ring-ring/50 flex flex-..."}
-                                          data-radix-collection-item=""
-                                          onClick={function handleEvent}
-                                          ref={function}
--                                         jf-ext-button-ct="what can i rent or borrow?"
-                                        >
-                            ...
                   ...
 
-[00:10:55.702] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:10:55.702] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:10:55.702] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763983457641}
-[00:12:11.419] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/marketplace color: rgb(120, 120, 120) color: inherit {"dp":"/marketplace","o":"http://localhost:3000/marketplace","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763983533281}
-[00:12:20.345] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sell color: rgb(120, 120, 120) color: inherit {"dp":"/sell","o":"http://localhost:3000/sell","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763983542178}
-[00:12:31.837] Server  LOG      ✓ Compiled in 957ms
-[00:13:10.101] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:13:10.564] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+[00:08:59.102] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:08:59.102] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/marketplace","route":"/marketplace"}
+[00:08:59.102] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/marketplace color: rgb(120, 120, 120) color: inherit {"dp":"/marketplace","o":"http://localhost:3000/marketplace","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764017002559}
+[00:09:01.116] Browser ERROR   Failed to fetch listings: {"code":"ERR_BAD_RESPONSE","config":{"adapter":["xhr","http","fetch"],"allowAbsoluteUrls":true,"baseURL":"http://localhost:5000","env":{},"headers":{"Accept":"application/json, text/plain, */*","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlkbHdjazgwMDAwYzhmaWdyeWFkNDl5IiwiaWF0IjoxNzY0MDE2NTMzLCJleHAiOjE3NjQwMTc0MzN9.DQ4OxDVdoQ_Wi0WAMqFIXvfFUMHGqgFC0wx-cfXjQcE","Content-Type":"application/json"},"maxBodyLength":-1,"maxContentLength":-1,"method":"get","timeout":0,"transformRequest":[null],"transformResponse":[null],"transitional":{"clarifyTimeoutError":false,"forcedJSONParsing":true,"silentJSONParsing":true},"url":"/listings","xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN"},"message":"Request failed with status code 500","name":"AxiosError","stack":"AxiosError: Request failed with status code 500\n    at settle (http://localhost:3000/_next/static/chunks/node_modules_63da5a80._.js:3943:16)\n    at XMLHttpRequest.onloadend (http://localhost:3000/_next/static/chunks/node_modules_63da5a80._.js:4458:174)\n    at Axios.request (http://localhost:3000/_next/static/chunks/node_modules_63da5a80._.js:5262:49)\n    at async MarketplacePage.useEffect.fetchListings (http://localhost:3000/_next/static/chunks/src_0fc7381b._.js:1564:42)","status":500}
+[00:09:36.933] Server  LOG      ✓ Compiled in 259ms
+[00:09:57.115] Browser ERROR   Failed to fetch listings: {"code":"ERR_BAD_RESPONSE","config":{"adapter":["xhr","http","fetch"],"allowAbsoluteUrls":true,"baseURL":"http://localhost:5000","env":{},"headers":{"Accept":"application/json, text/plain, */*","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlkbHdjazgwMDAwYzhmaWdyeWFkNDl5IiwiaWF0IjoxNzY0MDE2NTMzLCJleHAiOjE3NjQwMTc0MzN9.DQ4OxDVdoQ_Wi0WAMqFIXvfFUMHGqgFC0wx-cfXjQcE","Content-Type":"application/json"},"maxBodyLength":-1,"maxContentLength":-1,"method":"get","timeout":0,"transformRequest":[null],"transformResponse":[null],"transitional":{"clarifyTimeoutError":false,"forcedJSONParsing":true,"silentJSONParsing":true},"url":"/listings","xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN"},"message":"Request failed with status code 500","name":"AxiosError","stack":"AxiosError: Request failed with status code 500\n    at settle (http://localhost:3000/_next/static/chunks/node_modules_63da5a80._.js:3943:16)\n    at XMLHttpRequest.onloadend (http://localhost:3000/_next/static/chunks/node_modules_63da5a80._.js:4458:174)\n    at Axios.request (http://localhost:3000/_next/static/chunks/node_modules_63da5a80._.js:5262:49)\n    at async MarketplacePage.useEffect.fetchListings (http://localhost:3000/_next/static/chunks/src_0fc7381b._.js:1564:42)","status":500}
+[00:09:57.115] Browser ERROR   Failed to fetch listings: {"code":"ERR_BAD_RESPONSE","config":{"adapter":["xhr","http","fetch"],"allowAbsoluteUrls":true,"baseURL":"http://localhost:5000","env":{},"headers":{"Accept":"application/json, text/plain, */*","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlkbHdjazgwMDAwYzhmaWdyeWFkNDl5IiwiaWF0IjoxNzY0MDE2NTMzLCJleHAiOjE3NjQwMTc0MzN9.DQ4OxDVdoQ_Wi0WAMqFIXvfFUMHGqgFC0wx-cfXjQcE","Content-Type":"application/json"},"maxBodyLength":-1,"maxContentLength":-1,"method":"get","timeout":0,"transformRequest":[null],"transformResponse":[null],"transitional":{"clarifyTimeoutError":false,"forcedJSONParsing":true,"silentJSONParsing":true},"url":"/listings","xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN"},"message":"Request failed with status code 500","name":"AxiosError","stack":"AxiosError: Request failed with status code 500\n    at settle (http://localhost:3000/_next/static/chunks/node_modules_63da5a80._.js:3943:16)\n    at XMLHttpRequest.onloadend (http://localhost:3000/_next/static/chunks/node_modules_63da5a80._.js:4458:174)\n    at Axios.request (http://localhost:3000/_next/static/chunks/node_modules_63da5a80._.js:5262:49)\n    at async MarketplacePage.useEffect.fetchListings (http://localhost:3000/_next/static/chunks/src_0fc7381b._.js:1564:42)","status":500}
+[00:10:28.744] Server  LOG      ✓ Compiled in 298ms
+[00:13:02.107] Browser ERROR   ./src/app/night-market/page.tsx:150:13
+Parsing ecmascript source code failed
+  148 |               </Button>
+  149 |             </div>
+> 150 |           )}}
+      |             ^
+  151 |         </div>
+  152 |       </main>
+  153 |
 
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
 
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+Import traces:
+  Client Component Browser:
+    ./src/app/night-market/page.tsx [Client Component Browser]
+    ./src/app/night-market/page.tsx [Server Component]
 
-%s%s https://react.dev/link/hydration-mismatch 
+  Client Component SSR:
+    ./src/app/night-market/page.tsx [Client Component SSR]
+    ./src/app/night-market/page.tsx [Server Component]
+[00:13:28.398] Server  LOG      ✓ Compiled in 222ms
+[00:13:29.103] Browser ERROR   ./src/app/night-market/page.tsx:150:13
+Parsing ecmascript source code failed
+  148 |               </Button>
+  149 |             </div>
+> 150 |           )}}
+      |             ^
+  151 |         </div>
+  152 |       </main>
+  153 |
 
-  ...
-    <SegmentViewNode type="page" pagePath="sell/page.tsx">
-      <SegmentTrieNode>
-      <ClientPageRoot Component={function SellPage} serverProvidedParams={{...}}>
-        <SellPage params={Promise} searchParams={Promise}>
-          <div className="flex min-h...">
-            <SiteHeader>
-            <main className="flex-1 bg-...">
-              <div className="container ...">
-                <div>
-                <Card>
-                  <div data-slot="card" className="bg-card te...">
-                    <CardHeader>
-                    <CardContent>
-                      <div data-slot="card-content" className="px-6">
-                        <form className="space-y-6">
-                          <div>
-                          <div className="space-y-2">
-                            <Label>
-                            <Input id="title" placeholder="e.g., Intr..." required={true}>
-                              <input
-                                type={undefined}
-                                data-slot="input"
-                                className="file:text-foreground placeholder:text-muted-foreground selection:bg-primary..."
-                                id="title"
-                                placeholder="e.g., Introduction to Algorithms Textbook"
-                                required={true}
--                               jf-ext-cache-id="0"
-                              >
-                          <div className="space-y-2">
-                            <Label>
-                            <Textarea id="description" placeholder="Describe y..." rows={4} required={true}>
-                              <textarea
-                                data-slot="textarea"
-                                className="border-input placeholder:text-muted-foreground focus-visible:border-ring fo..."
-                                id="description"
-                                placeholder="Describe your item, its condition, and any other relevant details..."
-                                rows={4}
-                                required={true}
--                               jf-ext-cache-id="6"
-                              >
-                          <div className="grid gap-4...">
-                            ...
-                              ...
-                                <Slot ref={function}>
-                                  <SlotClone ref={function}>
-                                    <Primitive.button type="button" role="combobox" aria-controls="radix-_R_9..." ...>
-                                      <button
-                                        type="button"
-                                        role="combobox"
-                                        aria-controls="radix-_R_9il5esndlb_"
-                                        aria-expanded={false}
-                                        aria-required={true}
-                                        aria-autocomplete="none"
-                                        dir="ltr"
-                                        data-state="closed"
-                                        disabled={false}
-                                        data-disabled={undefined}
-                                        data-placeholder=""
-                                        data-slot="select-trigger"
-                                        data-size="default"
-                                        className={"border-input data-[placeholder]:text-muted-foreground [&_svg:not(..."}
-                                        id="category"
-                                        onClick={function handleEvent}
-                                        onPointerDown={function handleEvent}
-                                        onKeyDown={function handleEvent}
-                                        ref={function}
--                                       jf-ext-button-ct="select category"
-                                      >
-                              ...
-                                <Primitive.span asChild={true} ref={null} style={{position:"...", ...}}>
-                                  <Slot style={{position:"...", ...}} ref={null}>
-                                    <SlotClone style={{position:"...", ...}} ref={null}>
-                                      <select
-                                        aria-hidden={true}
-                                        required={true}
-                                        tabIndex={-1}
-                                        name={undefined}
-                                        autoComplete={undefined}
-                                        onChange={function onChange}
-                                        disabled={undefined}
-                                        form={undefined}
-                                        ref={function}
-                                        defaultValue={undefined}
-                                        style={{position:"absolute",border:0,width:1,height:1,padding:0,margin:-1,overflow:"hidden",clip:"rect(0, 0...", ...}}
--                                       jf-ext-cache-id="3"
-                                      >
-                            ...
-                              ...
-                                <Slot ref={function}>
-                                  <SlotClone ref={function}>
-                                    <Primitive.button type="button" role="combobox" aria-controls="radix-_R_a..." ...>
-                                      <button
-                                        type="button"
-                                        role="combobox"
-                                        aria-controls="radix-_R_ail5esndlb_"
-                                        aria-expanded={false}
-                                        aria-required={true}
-                                        aria-autocomplete="none"
-                                        dir="ltr"
-                                        data-state="closed"
-                                        disabled={false}
-                                        data-disabled={undefined}
-                                        data-placeholder=""
-                                        data-slot="select-trigger"
-                                        data-size="default"
-                                        className={"border-input data-[placeholder]:text-muted-foreground [&_svg:not(..."}
-                                        id="condition"
-                                        onClick={function handleEvent}
-                                        onPointerDown={function handleEvent}
-                                        onKeyDown={function handleEvent}
-                                        ref={function}
--                                       jf-ext-button-ct="select condition"
-                                      >
-                              ...
-                                <Primitive.span asChild={true} ref={null} style={{position:"...", ...}}>
-                                  <Slot style={{position:"...", ...}} ref={null}>
-                                    <SlotClone style={{position:"...", ...}} ref={null}>
-                                      <select
-                                        aria-hidden={true}
-                                        required={true}
-                                        tabIndex={-1}
-                                        name={undefined}
-                                        autoComplete={undefined}
-                                        onChange={function onChange}
-                                        disabled={undefined}
-                                        form={undefined}
-                                        ref={function}
-                                        defaultValue={undefined}
-                                        style={{position:"absolute",border:0,width:1,height:1,padding:0,margin:-1,overflow:"hidden",clip:"rect(0, 0...", ...}}
--                                       jf-ext-cache-id="4"
-                                      >
-                          <div className="grid gap-4...">
-                            <div className="space-y-2">
-                              <Label>
-                              <Input id="price" type="number" placeholder="500" required={true}>
-                                <input
-                                  type="number"
-                                  data-slot="input"
-                                  className="file:text-foreground placeholder:text-muted-foreground selection:bg-prima..."
-                                  id="price"
-                                  placeholder="500"
-                                  required={true}
--                                 jf-ext-cache-id="1"
-                                >
-                            ...
-                              ...
-                                <Slot ref={function}>
-                                  <SlotClone ref={function}>
-                                    <Primitive.button type="button" role="combobox" aria-controls="radix-_R_a..." ...>
-                                      <button
-                                        type="button"
-                                        role="combobox"
-                                        aria-controls="radix-_R_aml5esndlb_"
-                                        aria-expanded={false}
-                                        aria-required={true}
-                                        aria-autocomplete="none"
-                                        dir="ltr"
-                                        data-state="closed"
-                                        disabled={false}
-                                        data-disabled={undefined}
-                                        data-placeholder=""
-                                        data-slot="select-trigger"
-                                        data-size="default"
-                                        className={"border-input data-[placeholder]:text-muted-foreground [&_svg:not(..."}
-                                        id="location"
-                                        onClick={function handleEvent}
-                                        onPointerDown={function handleEvent}
-                                        onKeyDown={function handleEvent}
-                                        ref={function}
--                                       jf-ext-button-ct="select location"
-                                      >
-                              ...
-                                <Primitive.span asChild={true} ref={null} style={{position:"...", ...}}>
-                                  <Slot style={{position:"...", ...}} ref={null}>
-                                    <SlotClone style={{position:"...", ...}} ref={null}>
-                                      <select
-                                        aria-hidden={true}
-                                        required={true}
-                                        tabIndex={-1}
-                                        name={undefined}
-                                        autoComplete={undefined}
-                                        onChange={function onChange}
-                                        disabled={undefined}
-                                        form={undefined}
-                                        ref={function}
-                                        defaultValue={undefined}
-                                        style={{position:"absolute",border:0,width:1,height:1,padding:0,margin:-1,overflow:"hidden",clip:"rect(0, 0...", ...}}
--                                       jf-ext-cache-id="5"
-                                      >
-                          <div className="space-y-2">
-                            <Label>
-                            <Input id="whatsapp" type="tel" placeholder="+91 98765 ...">
-                              <input
-                                type="tel"
-                                data-slot="input"
-                                className="file:text-foreground placeholder:text-muted-foreground selection:bg-primary..."
-                                id="whatsapp"
-                                placeholder="+91 98765 43210"
--                               jf-ext-cache-id="2"
-                              >
-                            ...
-                          <div className="flex gap-3...">
-                            <Button type="submit" className="flex-1" size="lg">
-                              <button
-                                data-slot="button"
-                                className={"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm f..."}
-                                type="submit"
--                               jf-ext-button-ct="publish listing"
-                              >
-+                               Publish Listing
-                            ...
-    ...
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
 
-[00:13:10.675] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:13:10.675] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/sell","route":"/sell"}
-[00:13:10.675] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sell color: rgb(120, 120, 120) color: inherit {"dp":"/sell","o":"http://localhost:3000/sell","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763983592612}
-[00:13:28.440] Server  LOG      ✓ Compiled in 542ms
-[00:13:33.042] Server  LOG      ✓ Compiled in 469ms
-[00:13:39.067] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763983620996}
-[00:13:46.208] Server  LOG      ✓ Compiled in 458ms
-[00:13:47.810] Server  LOG      ✓ Compiled in 460ms
-[00:14:24.793] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/signup color: rgb(120, 120, 120) color: inherit {"dp":"/signup","o":"http://localhost:3000/signup","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763983666723}
-[00:14:50.493] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:14:50.763] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+Import traces:
+  Client Component Browser:
+    ./src/app/night-market/page.tsx [Client Component Browser]
+    ./src/app/night-market/page.tsx [Server Component]
 
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
-
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
-
-%s%s https://react.dev/link/hydration-mismatch 
-
-  ...
-    <RenderFromTemplateContext>
-      <ScrollAndFocusHandler segmentPath={[...]}>
-        <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
-          <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
-            <LoadingBoundary name="signup/" loading={null}>
-              <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
-                <RedirectBoundary>
-                  <RedirectErrorBoundary router={{...}}>
-                    <InnerLayoutRouter url="/signup" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
-                      <SegmentViewNode type="page" pagePath="signup/pag...">
-                        <SegmentTrieNode>
-                        <SignupPage>
-                          <div className="flex min-h...">
-                            <Card>
-                              <div data-slot="card" className="bg-card te...">
-                                <div>
-                                <CardContent>
-                                  <div data-slot="card-content" className="px-6 space...">
-                                    <Button>
-                                      <button
-                                        data-slot="button"
-                                        className={"inline-flex items-center justify-center whitespace-nowrap text-sm..."}
--                                       jf-ext-button-ct="continue with google"
-                                      >
-                                    <div>
-                                    <form className="space-y-4">
-                                      <div className="space-y-2">
-                                        <Label>
-                                        <Input>
-                                          <input
-                                            type="text"
-                                            data-slot="input"
-                                            className="file:text-foreground placeholder:text-muted-foreground selectio..."
-                                            id="name"
-                                            placeholder="Rahul Kumar"
-                                            required={true}
--                                           jf-ext-cache-id="0"
-                                          >
-                                      <div className="space-y-2">
-                                        <Label>
-                                        <Input>
-                                          <input
-                                            type="email"
-                                            data-slot="input"
-                                            className="file:text-foreground placeholder:text-muted-foreground selectio..."
-                                            id="email"
-                                            placeholder="you@college.edu"
-                                            required={true}
--                                           jf-ext-cache-id="1"
-                                          >
-                                      <div>
-                                      <div>
-                                      <Button>
-                                        <button
-                                          data-slot="button"
-                                          className={"inline-flex items-center justify-center gap-2 whitespace-nowrap..."}
-                                          type="submit"
--                                         jf-ext-button-ct="create account"
-                                        >
-+                                         Create Account
-                                    ...
-                      ...
-                    ...
-          ...
-
-[00:14:50.763] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:14:50.763] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/signup","route":"/signup"}
-[00:14:50.763] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/signup color: rgb(120, 120, 120) color: inherit {"dp":"/signup","o":"http://localhost:3000/signup","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763983692682}
-[00:15:21.716] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763983723652}
-[00:15:33.075] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:15:33.871] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
-
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
-
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
-
-%s%s https://react.dev/link/hydration-mismatch 
-
-  ...
-    <RenderFromTemplateContext>
-      <ScrollAndFocusHandler segmentPath={[...]}>
-        <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
-          <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
-            <LoadingBoundary name="login/" loading={null}>
-              <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
-                <RedirectBoundary>
-                  <RedirectErrorBoundary router={{...}}>
-                    <InnerLayoutRouter url="/login" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
-                      <SegmentViewNode type="page" pagePath="login/page...">
-                        <SegmentTrieNode>
-                        <LoginPage>
-                          <div className="flex min-h...">
-                            <Card>
-                              <div data-slot="card" className="bg-card te...">
-                                <div>
-                                <CardContent>
-                                  <div data-slot="card-content" className="px-6 space...">
-                                    <Button>
-                                      <button
-                                        data-slot="button"
-                                        className={"inline-flex items-center justify-center whitespace-nowrap text-sm..."}
--                                       jf-ext-button-ct="continue with google"
-                                      >
-                                    <div>
-                                    <form className="space-y-4">
-                                      <div className="space-y-2">
-                                        <Label>
-                                        <Input>
-                                          <input
-                                            type="email"
-                                            data-slot="input"
-                                            className="file:text-foreground placeholder:text-muted-foreground selectio..."
-                                            id="email"
-                                            placeholder="you@college.edu"
-                                            required={true}
--                                           jf-ext-cache-id="0"
-                                          >
-                                      <div>
-                                      <Button>
-                                        <button
-                                          data-slot="button"
-                                          className={"inline-flex items-center justify-center gap-2 whitespace-nowrap..."}
-                                          type="submit"
--                                         jf-ext-button-ct="sign in"
-                                        >
-+                                         Sign in
-                                    ...
-                      ...
-                    ...
-          ...
-
-[00:15:33.871] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:15:33.871] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
-[00:15:33.871] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763983735798}
+  Client Component SSR:
+    ./src/app/night-market/page.tsx [Client Component SSR]
+    ./src/app/night-market/page.tsx [Server Component]
+[00:17:58.771] Server  LOG      ✓ Compiled in 90ms
+[00:18:20.037] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764017563438}
+[00:18:20.037] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/marketplace color: rgb(120, 120, 120) color: inherit {"dp":"/marketplace","o":"http://localhost:3000/marketplace","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764017563530}
+[00:18:20.037] Browser ERROR   Failed to fetch listings: {"code":"ERR_BAD_RESPONSE","config":{"adapter":["xhr","http","fetch"],"allowAbsoluteUrls":true,"baseURL":"http://localhost:5000","env":{},"headers":{"Accept":"application/json, text/plain, */*","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlkbHdjazgwMDAwYzhmaWdyeWFkNDl5IiwiaWF0IjoxNzY0MDE2NTMzLCJleHAiOjE3NjQwMTc0MzN9.DQ4OxDVdoQ_Wi0WAMqFIXvfFUMHGqgFC0wx-cfXjQcE","Content-Type":"application/json"},"maxBodyLength":-1,"maxContentLength":-1,"method":"get","timeout":0,"transformRequest":[null],"transformResponse":[null],"transitional":{"clarifyTimeoutError":false,"forcedJSONParsing":true,"silentJSONParsing":true},"url":"/listings","xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN"},"message":"Request failed with status code 500","name":"AxiosError","stack":"AxiosError: Request failed with status code 500\n    at settle (http://localhost:3000/_next/static/chunks/node_modules_63da5a80._.js:3943:16)\n    at XMLHttpRequest.onloadend (http://localhost:3000/_next/static/chunks/node_modules_63da5a80._.js:4458:174)\n    at Axios.request (http://localhost:3000/_next/static/chunks/node_modules_63da5a80._.js:5262:49)\n    at async MarketplacePage.useEffect.fetchListings (http://localhost:3000/_next/static/chunks/src_0fc7381b._.js?id=%255Bproject%255D%252Fsrc%252Fapp%252Fmarketplace%252Fpage.tsx+%255Bapp-client%255D+%2528ecmascript%2529:65:42)","status":500}
+[00:18:20.037] Browser ERROR   Failed to fetch listings: {"code":"ERR_BAD_RESPONSE","config":{"adapter":["xhr","http","fetch"],"allowAbsoluteUrls":true,"baseURL":"http://localhost:5000","env":{},"headers":{"Accept":"application/json, text/plain, */*","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlkbHdjazgwMDAwYzhmaWdyeWFkNDl5IiwiaWF0IjoxNzY0MDE2NTMzLCJleHAiOjE3NjQwMTc0MzN9.DQ4OxDVdoQ_Wi0WAMqFIXvfFUMHGqgFC0wx-cfXjQcE","Content-Type":"application/json"},"maxBodyLength":-1,"maxContentLength":-1,"method":"get","timeout":0,"transformRequest":[null],"transformResponse":[null],"transitional":{"clarifyTimeoutError":false,"forcedJSONParsing":true,"silentJSONParsing":true},"url":"/listings","xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN"},"message":"Request failed with status code 500","name":"AxiosError","stack":"AxiosError: Request failed with status code 500\n    at settle (http://localhost:3000/_next/static/chunks/node_modules_63da5a80._.js:3943:16)\n    at XMLHttpRequest.onloadend (http://localhost:3000/_next/static/chunks/node_modules_63da5a80._.js:4458:174)\n    at Axios.request (http://localhost:3000/_next/static/chunks/node_modules_63da5a80._.js:5262:49)\n    at async MarketplacePage.useEffect.fetchListings (http://localhost:3000/_next/static/chunks/src_0fc7381b._.js?id=%255Bproject%255D%252Fsrc%252Fapp%252Fmarketplace%252Fpage.tsx+%255Bapp-client%255D+%2528ecmascript%2529:65:42)","status":500}
+[00:18:22.045] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764017565489}
+[00:18:22.045] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/marketplace color: rgb(120, 120, 120) color: inherit {"dp":"/marketplace","o":"http://localhost:3000/marketplace","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764017565556}
+[00:18:22.045] Browser ERROR   Failed to fetch listings: {"code":"ERR_BAD_RESPONSE","config":{"adapter":["xhr","http","fetch"],"allowAbsoluteUrls":true,"baseURL":"http://localhost:5000","env":{},"headers":{"Accept":"application/json, text/plain, */*","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlkbHdjazgwMDAwYzhmaWdyeWFkNDl5IiwiaWF0IjoxNzY0MDE2NTMzLCJleHAiOjE3NjQwMTc0MzN9.DQ4OxDVdoQ_Wi0WAMqFIXvfFUMHGqgFC0wx-cfXjQcE","Content-Type":"application/json"},"maxBodyLength":-1,"maxContentLength":-1,"method":"get","timeout":0,"transformRequest":[null],"transformResponse":[null],"transitional":{"clarifyTimeoutError":false,"forcedJSONParsing":true,"silentJSONParsing":true},"url":"/listings","xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN"},"message":"Request failed with status code 500","name":"AxiosError","stack":"AxiosError: Request failed with status code 500\n    at settle (http://localhost:3000/_next/static/chunks/node_modules_63da5a80._.js:3943:16)\n    at XMLHttpRequest.onloadend (http://localhost:3000/_next/static/chunks/node_modules_63da5a80._.js:4458:174)\n    at Axios.request (http://localhost:3000/_next/static/chunks/node_modules_63da5a80._.js:5262:49)\n    at async MarketplacePage.useEffect.fetchListings (http://localhost:3000/_next/static/chunks/src_0fc7381b._.js?id=%255Bproject%255D%252Fsrc%252Fapp%252Fmarketplace%252Fpage.tsx+%255Bapp-client%255D+%2528ecmascript%2529:65:42)","status":500}
+[00:18:22.045] Browser ERROR   Failed to fetch listings: {"code":"ERR_BAD_RESPONSE","config":{"adapter":["xhr","http","fetch"],"allowAbsoluteUrls":true,"baseURL":"http://localhost:5000","env":{},"headers":{"Accept":"application/json, text/plain, */*","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWlkbHdjazgwMDAwYzhmaWdyeWFkNDl5IiwiaWF0IjoxNzY0MDE2NTMzLCJleHAiOjE3NjQwMTc0MzN9.DQ4OxDVdoQ_Wi0WAMqFIXvfFUMHGqgFC0wx-cfXjQcE","Content-Type":"application/json"},"maxBodyLength":-1,"maxContentLength":-1,"method":"get","timeout":0,"transformRequest":[null],"transformResponse":[null],"transitional":{"clarifyTimeoutError":false,"forcedJSONParsing":true,"silentJSONParsing":true},"url":"/listings","xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN"},"message":"Request failed with status code 500","name":"AxiosError","stack":"AxiosError: Request failed with status code 500\n    at settle (http://localhost:3000/_next/static/chunks/node_modules_63da5a80._.js:3943:16)\n    at XMLHttpRequest.onloadend (http://localhost:3000/_next/static/chunks/node_modules_63da5a80._.js:4458:174)\n    at Axios.request (http://localhost:3000/_next/static/chunks/node_modules_63da5a80._.js:5262:49)\n    at async MarketplacePage.useEffect.fetchListings (http://localhost:3000/_next/static/chunks/src_0fc7381b._.js?id=%255Bproject%255D%252Fsrc%252Fapp%252Fmarketplace%252Fpage.tsx+%255Bapp-client%255D+%2528ecmascript%2529:65:42)","status":500}
+[00:19:06.579] Server  LOG      ✓ Compiled in 122ms
+[00:19:36.899] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764017640459}
+[00:19:37.034] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/marketplace color: rgb(120, 120, 120) color: inherit {"dp":"/marketplace","o":"http://localhost:3000/marketplace","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764017640625}
+[00:19:42.624] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764017646138}
+[00:19:42.624] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/marketplace color: rgb(120, 120, 120) color: inherit {"dp":"/marketplace","o":"http://localhost:3000/marketplace","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764017646217}
+[00:19:49.614] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:19:50.047] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:19:50.048] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:19:50.048] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764017653642}
+[00:19:50.721] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/marketplace color: rgb(120, 120, 120) color: inherit {"dp":"/marketplace","o":"http://localhost:3000/marketplace","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764017654302}
+[00:19:56.867] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/night-market color: rgb(120, 120, 120) color: inherit {"dp":"/night-market","o":"http://localhost:3000/night-market","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764017660457}
+[00:20:00.330] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sell color: rgb(120, 120, 120) color: inherit {"dp":"/sell","o":"http://localhost:3000/sell","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764017663845}
+[00:20:15.534] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/marketplace color: rgb(120, 120, 120) color: inherit {"dp":"/marketplace","o":"http://localhost:3000/marketplace","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764017679130}
+[00:21:32.836] Server  LOG      ✓ Compiled in 262ms

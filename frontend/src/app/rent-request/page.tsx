@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/src/contexts/AuthContext"
 import { SiteHeader } from "@/src/components/site-header"
@@ -11,10 +11,22 @@ import { Textarea } from "@/src/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/src/components/ui/select"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/src/components/ui/card"
 import Link from "next/link"
+import api from "@/src/lib/api"
+import { useToast } from "@/src/hooks/use-toast"
 
 export default function RentRequestPage() {
   const { user, isLoading } = useAuth();
   const router = useRouter();
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    itemName: '',
+    reason: '',
+    budgetRange: '',
+    neededFor: '',
+    location: '',
+    whatsapp: ''
+  });
 
   useEffect(() => {
     if (!isLoading && !user) {
@@ -37,6 +49,39 @@ export default function RentRequestPage() {
     return null; // Will redirect
   }
 
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      await api.post('/borrow', {
+        itemName: formData.itemName,
+        reason: formData.reason,
+        budgetRange: formData.budgetRange,
+        neededFor: formData.neededFor,
+      })
+
+      toast({
+        title: "Success!",
+        description: "Your rent request has been created successfully.",
+      })
+
+      router.push('/marketplace')
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.response?.data?.error || "Failed to create request. Please try again.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
@@ -55,11 +100,17 @@ export default function RentRequestPage() {
               <CardDescription>Need something temporarily? Let others know!</CardDescription>
             </CardHeader>
             <CardContent>
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 {/* Title */}
                 <div className="space-y-2">
                   <Label htmlFor="title">What do you need?</Label>
-                  <Input id="title" placeholder="e.g., Scientific Calculator" required />
+                  <Input 
+                    id="title" 
+                    placeholder="e.g., Scientific Calculator" 
+                    value={formData.itemName}
+                    onChange={(e) => handleInputChange('itemName', e.target.value)}
+                    required 
+                  />
                 </div>
 
                 {/* Description */}
@@ -69,6 +120,8 @@ export default function RentRequestPage() {
                     id="description"
                     placeholder="Why do you need it? Any specific requirements..."
                     rows={4}
+                    value={formData.reason}
+                    onChange={(e) => handleInputChange('reason', e.target.value)}
                     required
                   />
                   <p className="text-xs text-muted-foreground">
@@ -98,7 +151,13 @@ export default function RentRequestPage() {
                 {/* Budget */}
                 <div className="space-y-2">
                   <Label htmlFor="budget">Budget (Optional)</Label>
-                  <Input id="budget" type="number" placeholder="e.g., 100" />
+                  <Input 
+                    id="budget" 
+                    type="text" 
+                    placeholder="e.g., ₹50-100" 
+                    value={formData.budgetRange}
+                    onChange={(e) => handleInputChange('budgetRange', e.target.value)}
+                  />
                   <p className="text-xs text-muted-foreground">How much you're willing to pay for the rental period</p>
                 </div>
 
@@ -110,12 +169,24 @@ export default function RentRequestPage() {
                       <SelectValue placeholder="Select location" />
                     </SelectTrigger>
                     <SelectContent>
+                      {/* Boys Hostels */}
                       <SelectItem value="hostel-a">Hostel A</SelectItem>
                       <SelectItem value="hostel-b">Hostel B</SelectItem>
                       <SelectItem value="hostel-c">Hostel C</SelectItem>
                       <SelectItem value="hostel-d">Hostel D</SelectItem>
-                      <SelectItem value="girls-1">Girls Hostel 1</SelectItem>
-                      <SelectItem value="girls-2">Girls Hostel 2</SelectItem>
+                      <SelectItem value="hostel-h">Hostel H</SelectItem>
+                      <SelectItem value="hostel-j">Hostel J</SelectItem>
+                      <SelectItem value="hostel-k">Hostel K</SelectItem>
+                      <SelectItem value="hostel-o">Hostel O</SelectItem>
+                      <SelectItem value="hostel-m">Hostel M</SelectItem>
+                      <SelectItem value="hostel-pg">Hostel P.G.</SelectItem>
+                      {/* Girls Hostels */}
+                      <SelectItem value="hostel-q">Hostel Q</SelectItem>
+                      <SelectItem value="hostel-n">Hostel N</SelectItem>
+                      <SelectItem value="hostel-i">Hostel I</SelectItem>
+                      <SelectItem value="hostel-e">Hostel E</SelectItem>
+                      <SelectItem value="hostel-frf">Hostel FRF</SelectItem>
+                      <SelectItem value="hostel-frg">Hostel FRG</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -129,8 +200,8 @@ export default function RentRequestPage() {
 
                 {/* Submit */}
                 <div className="flex gap-3 pt-4">
-                  <Button type="submit" className="flex-1" size="lg">
-                    Publish Request
+                  <Button type="submit" className="flex-1" size="lg" disabled={isSubmitting}>
+                    {isSubmitting ? "Publishing..." : "Publish Request"}
                   </Button>
                   <Button type="button" variant="outline" size="lg" asChild>
                     <Link href="/marketplace">Cancel</Link>

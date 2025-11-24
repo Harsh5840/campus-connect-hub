@@ -1,0 +1,12 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/auth/page": "/auth",
+  "/login/page": "/login",
+  "/marketplace/page": "/marketplace",
+  "/night-market/page": "/night-market",
+  "/page": "/",
+  "/rent-request/page": "/rent-request",
+  "/sell/page": "/sell",
+  "/signup/page": "/signup"
+}
