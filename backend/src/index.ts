@@ -7,7 +7,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from './generated';
 import { PrismaPg } from '@prisma/adapter-pg';
 import { Pool } from 'pg';
 import passport from 'passport';
