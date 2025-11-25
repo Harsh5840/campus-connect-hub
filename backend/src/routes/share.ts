@@ -9,13 +9,8 @@ router.get('/generate-message/:id', async (req, res) => {
     const { id } = req.params;
     const listing = await ListingService.getListingById(id);
 
-    const message = generateShareMessage({
-      title: listing.title,
-      price: listing.price,
-      condition: listing.condition,
-      imageUrl: listing.imageUrls[0] || '',
-      qrUrl: listing.qrUrl || '',
-    });
+    const baseUrl = `${req.protocol}://${req.get('host')}`;
+    const message = await generateShareMessage(id, baseUrl);
 
     res.json({ message });
   } catch (error: any) {

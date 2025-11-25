@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
+import jwt, { SignOptions } from 'jsonwebtoken';
 import { prisma } from '../lib/prisma';
 import { env } from '../config/env';
 
@@ -42,12 +42,24 @@ export const isAdmin = (req: AuthRequest, res: Response, next: NextFunction) => 
 };
 
 export const generateTokens = (userId: string) => {
-  const accessToken = jwt.sign({ userId }, env.JWT_ACCESS_SECRET, {
-    expiresIn: env.JWT_ACCESS_EXPIRES_IN,
-  });
-  const refreshToken = jwt.sign({ userId }, env.JWT_REFRESH_SECRET, {
-    expiresIn: env.JWT_REFRESH_EXPIRES_IN,
-  });
+  const accessTokenOptions: SignOptions = {
+    expiresIn: env.JWT_ACCESS_EXPIRES_IN as string,
+  };
+
+  const refreshTokenOptions: SignOptions = {
+    expiresIn: env.JWT_REFRESH_EXPIRES_IN as string,
+  };
+
+  const accessToken = jwt.sign(
+    { userId },
+    env.JWT_ACCESS_SECRET as string,
+    accessTokenOptions
+  );
+  const refreshToken = jwt.sign(
+    { userId },
+    env.JWT_REFRESH_SECRET as string,
+    refreshTokenOptions
+  );
   return { accessToken, refreshToken };
 };
 

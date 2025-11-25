@@ -31,7 +31,7 @@ passport.use(
 
         done(null, user);
       } catch (error) {
-        done(error, null);
+        done(error, false);
       }
     }
   )
@@ -58,7 +58,7 @@ passport.use(
 
         done(null, user);
       } catch (error) {
-        done(error, null);
+        done(error, false);
       }
     }
   )
@@ -74,6 +74,6 @@ passport.deserializeUser(async (id: string, done) => {
     const user = await prisma.user.findUnique({ where: { id } });
     done(null, user);
   } catch (error) {
-    done(error, null);
+    done(error, false);
   }
 });
