@@ -21,7 +21,7 @@ export class NightMarketService {
     });
 
     // Group by hostel
-    const grouped = posts.reduce((acc: any, post) => {
+    const grouped = posts.reduce((acc: any, post: any) => {
       if (!acc[post.hostel]) {
         acc[post.hostel] = [];
       }

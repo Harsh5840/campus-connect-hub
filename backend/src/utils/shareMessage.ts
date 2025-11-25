@@ -4,7 +4,7 @@ export const generateShareMessage = async (listingId: string, baseUrl: string): 
   const listing = await prisma.listing.findUnique({
     where: { id: listingId, isDeleted: false },
     include: { seller: { select: { name: true, hostel: true } } },
-  });
+  }) as any;
 
   if (!listing) {
     throw new Error('Listing not found');
