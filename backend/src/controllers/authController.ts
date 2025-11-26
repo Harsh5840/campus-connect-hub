@@ -34,21 +34,26 @@ export class AuthController {
 
   static googleAuth = passport.authenticate('google', { scope: ['profile', 'email'] });
 
-  static googleAuthCallback = passport.authenticate('google', { failureRedirect: '/auth/login' });
+  static googleAuthCallback = passport.authenticate('google', { 
+    failureRedirect: `${process.env.FRONTEND_URL}/login?error=auth_failed`,
+    session: false 
+  });
 
   static async googleAuthSuccess(req: AuthRequest, res: Response) {
     try {
       const user = req.user;
       if (!user) {
-        return res.status(401).json({ error: 'Authentication failed' });
+        return res.redirect(`${process.env.FRONTEND_URL}/login?error=auth_failed`);
       }
 
       const { generateTokens } = await import('../middleware/auth');
       const tokens = generateTokens(user.id);
 
-      res.json({ user, ...tokens });
+      // Redirect to frontend with tokens in URL
+      const redirectUrl = `${process.env.FRONTEND_URL}/auth/callback?accessToken=${tokens.accessToken}&refreshToken=${tokens.refreshToken}`;
+      res.redirect(redirectUrl);
     } catch (error: any) {
-      res.status(500).json({ error: error.message });
+      res.redirect(`${process.env.FRONTEND_URL}/login?error=server_error`);
     }
   }
 

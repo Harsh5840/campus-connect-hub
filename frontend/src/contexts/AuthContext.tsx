@@ -16,6 +16,7 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<void>;
   register: (data: { name: string; email: string; password: string }) => Promise<void>;
   logout: () => void;
+  setTokens: (accessToken: string, refreshToken: string) => void;
   isLoading: boolean;
 }
 
@@ -93,11 +94,24 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     router.push('/login');
   };
 
+  const setTokens = async (accessToken: string, refreshToken: string) => {
+    localStorage.setItem('accessToken', accessToken);
+    localStorage.setItem('refreshToken', refreshToken);
+    // Fetch user profile with new tokens
+    try {
+      const response = await api.get('/auth/profile');
+      setUser(response.data);
+    } catch (error) {
+      console.error('Failed to fetch user profile:', error);
+    }
+  };
+
   const value = {
     user,
     login,
     register,
     logout,
+    setTokens,
     isLoading,
   };
 
