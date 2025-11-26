@@ -12,7 +12,7 @@ import { Card, CardContent, CardFooter } from "@/src/components/ui/card"
 import { Badge } from "@/src/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/src/components/ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/src/components/ui/select"
-import { Search, Plus, MapPin, Moon } from "lucide-react"
+import { Search, Plus, MapPin, Moon, Clock, MessageCircle } from "lucide-react"
 import Link from "next/link"
 import api from "@/src/lib/api"
 
@@ -21,7 +21,10 @@ export default function MarketplacePage() {
   const router = useRouter();
   const { toast } = useToast();
   const [listings, setListings] = useState([])
+  const [myListings, setMyListings] = useState([])
+  const [borrowRequests, setBorrowRequests] = useState([])
   const [loading, setLoading] = useState(true)
+  const [loadingBorrow, setLoadingBorrow] = useState(true)
 
   useEffect(() => {
     if (!isLoading && !user) {
@@ -30,11 +33,17 @@ export default function MarketplacePage() {
   }, [user, isLoading, router]);
 
   useEffect(() => {
-    const fetchListings = async () => {
+    const fetchData = async () => {
       try {
-        const response = await api.get('/listings')
-        // Backend returns { listings, total, page, limit }
-        setListings(response.data.listings || [])
+        // Fetch all listings
+        const listingsResponse = await api.get('/listings')
+        const allListings = listingsResponse.data.listings || []
+        setListings(allListings)
+        
+        // Filter my listings
+        if (user) {
+          setMyListings(allListings.filter((l: any) => l.userId === user.id))
+        }
       } catch (error: any) {
         console.error('Failed to fetch listings:', error)
         toast({
@@ -47,8 +56,20 @@ export default function MarketplacePage() {
       }
     }
 
+    const fetchBorrowRequests = async () => {
+      try {
+        const response = await api.get('/borrow')
+        setBorrowRequests(response.data.requests || response.data || [])
+      } catch (error: any) {
+        console.error('Failed to fetch borrow requests:', error)
+      } finally {
+        setLoadingBorrow(false)
+      }
+    }
+
     if (user) {
-      fetchListings()
+      fetchData()
+      fetchBorrowRequests()
     }
   }, [user])
 
@@ -201,29 +222,114 @@ export default function MarketplacePage() {
             </TabsContent>
 
             <TabsContent value="sell">
-              <div className="flex flex-col items-center justify-center py-16 text-center">
-                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-muted">
-                  <Plus className="h-8 w-8 text-muted-foreground" />
+              {myListings.length > 0 ? (
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {myListings.map((product: any) => (
+                    <Card key={product.id} className="group overflow-hidden transition-all hover:shadow-md cursor-pointer" onClick={() => router.push(`/listings/${product.id}`)}>
+                      <div className="aspect-4/3 overflow-hidden bg-muted">
+                        <img
+                          src={product.imageUrls?.[0] || "/placeholder.svg"}
+                          alt={product.title}
+                          className="h-full w-full object-cover transition-transform group-hover:scale-105"
+                        />
+                      </div>
+                      <CardContent className="p-4">
+                        <div className="mb-2 flex items-start justify-between gap-2">
+                          <h3 className="font-semibold leading-tight text-pretty">{product.title}</h3>
+                        </div>
+                        <div className="mb-3 flex items-center gap-2">
+                          <Badge variant="secondary" className="text-xs">
+                            {product.condition}
+                          </Badge>
+                          <Badge variant={product.status === 'ACTIVE' ? 'default' : 'outline'} className="text-xs">
+                            {product.status}
+                          </Badge>
+                        </div>
+                        <p className="text-2xl font-bold">₹{product.price}</p>
+                      </CardContent>
+                      <CardFooter className="p-4 pt-0">
+                        <Button className="w-full bg-transparent" variant="outline">
+                          View Details
+                        </Button>
+                      </CardFooter>
+                    </Card>
+                  ))}
                 </div>
-                <h3 className="mb-2 text-xl font-semibold">No listings yet</h3>
-                <p className="mb-6 text-muted-foreground">Start selling items to see them here</p>
-                <Button asChild>
-                  <Link href="/sell">Create Listing</Link>
-                </Button>
-              </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center py-16 text-center">
+                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-muted">
+                    <Plus className="h-8 w-8 text-muted-foreground" />
+                  </div>
+                  <h3 className="mb-2 text-xl font-semibold">No listings yet</h3>
+                  <p className="mb-6 text-muted-foreground">Start selling items to see them here</p>
+                  <Button asChild>
+                    <Link href="/sell">Create Listing</Link>
+                  </Button>
+                </div>
+              )}
             </TabsContent>
 
             <TabsContent value="rent">
-              <div className="flex flex-col items-center justify-center py-16 text-center">
-                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-muted">
-                  <Plus className="h-8 w-8 text-muted-foreground" />
+              {loadingBorrow ? (
+                <div className="flex items-center justify-center py-16">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
                 </div>
-                <h3 className="mb-2 text-xl font-semibold">No rent requests</h3>
-                <p className="mb-6 text-muted-foreground">Create a request when you need to borrow something</p>
-                <Button asChild>
-                  <Link href="/rent-request">Create Request</Link>
-                </Button>
-              </div>
+              ) : borrowRequests.length > 0 ? (
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {borrowRequests.map((request: any) => (
+                    <Card key={request.id} className="group overflow-hidden transition-all hover:shadow-md">
+                      <CardContent className="p-4">
+                        <div className="mb-2 flex items-start justify-between gap-2">
+                          <h3 className="font-semibold leading-tight text-pretty">{request.itemName}</h3>
+                          <Badge variant={request.status === 'OPEN' ? 'default' : 'secondary'} className="text-xs shrink-0">
+                            {request.status}
+                          </Badge>
+                        </div>
+                        <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{request.reason}</p>
+                        <div className="flex flex-wrap items-center gap-2 mb-3">
+                          <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                            <MapPin className="h-3 w-3" />
+                            {request.location}
+                          </div>
+                          <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                            <Clock className="h-3 w-3" />
+                            {request.neededFor}
+                          </div>
+                        </div>
+                        <p className="text-lg font-bold text-primary">Budget: {request.budgetRange}</p>
+                        <p className="text-xs text-muted-foreground mt-2">
+                          Posted by {request.requester?.name || 'Anonymous'}
+                        </p>
+                      </CardContent>
+                      <CardFooter className="p-4 pt-0">
+                        <Button 
+                          className="w-full gap-2" 
+                          variant="outline"
+                          onClick={() => {
+                            if (request.whatsapp) {
+                              window.open(`https://wa.me/${request.whatsapp.replace(/\D/g, '')}?text=Hi! I saw your rent request for "${request.itemName}" on CampusThrift.`, '_blank')
+                            }
+                          }}
+                        >
+                          <MessageCircle className="h-4 w-4" />
+                          Contact
+                        </Button>
+                      </CardFooter>
+                    </Card>
+                  ))}
+                </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center py-16 text-center">
+                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-muted">
+                    <Plus className="h-8 w-8 text-muted-foreground" />
+                  </div>
+                  <h3 className="mb-2 text-xl font-semibold">No rent requests</h3>
+                  <p className="mb-6 text-muted-foreground">Create a request when you need to borrow something</p>
+                  <Button asChild>
+                    <Link href="/rent-request">Create Request</Link>
+                  </Button>
+                </div>
+              )}
             </TabsContent>
           </Tabs>
         </div>
