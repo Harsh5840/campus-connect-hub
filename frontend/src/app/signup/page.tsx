@@ -19,6 +19,16 @@ export default function SignupPage() {
   const [isLoading, setIsLoading] = useState(false)
   const { register } = useAuth()
   const { toast } = useToast()
+  const searchParams = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '')
+  const redirectTo = searchParams.get('redirect') || '/marketplace'
+
+  const handleGoogleSignUp = () => {
+    // Store redirect URL in sessionStorage for OAuth callback
+    if (redirectTo) {
+      sessionStorage.setItem('oauth_redirect', redirectTo);
+    }
+    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/google`;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -66,9 +76,7 @@ export default function SignupPage() {
             variant="outline" 
             className="w-full gap-2 bg-transparent" 
             size="lg"
-            onClick={() => {
-              window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/google`;
-            }}
+            onClick={handleGoogleSignUp}
           >
             <svg className="h-5 w-5" viewBox="0 0 24 24">
               <path

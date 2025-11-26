@@ -35,9 +35,9 @@ export default function ListingDetailsPage({ params }: { params: Promise<{ id: s
 
   useEffect(() => {
     if (!authLoading && !user) {
-      router.push('/login')
+      router.push(`/login?redirect=/listings/${resolvedParams.id}`)
     }
-  }, [user, authLoading, router])
+  }, [user, authLoading, router, resolvedParams.id])
 
   useEffect(() => {
     const fetchListing = async () => {

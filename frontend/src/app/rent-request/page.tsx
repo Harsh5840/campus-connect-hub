@@ -30,7 +30,7 @@ export default function RentRequestPage() {
 
   useEffect(() => {
     if (!isLoading && !user) {
-      router.push('/login');
+      router.push('/login?redirect=/rent-request');
     }
   }, [user, isLoading, router]);
 

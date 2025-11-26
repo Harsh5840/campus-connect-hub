@@ -16,6 +16,8 @@ export default function Auth() {
 	const [errors, setErrors] = useState<Record<string, string>>({});
 	const [isLoading, setIsLoading] = useState(false);
 	const router = useRouter();
+	const searchParams = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '');
+	const redirectTo = searchParams.get('redirect') || '/marketplace';
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -30,12 +32,20 @@ export default function Auth() {
 			await new Promise((resolve) => setTimeout(resolve, 1000));
 
 			// Redirect after successful submission
-			router.push("/dashboard");
+			router.push(redirectTo);
 		} catch {
 			setErrors({ submit: "An error occurred. Please try again." });
 		} finally {
 			setIsLoading(false);
 		}
+	};
+
+	const handleGoogleSignIn = () => {
+		// Store redirect URL in sessionStorage for OAuth callback
+		if (redirectTo) {
+			sessionStorage.setItem('oauth_redirect', redirectTo);
+		}
+		window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/google`;
 	};
 
 	return (
@@ -70,9 +80,7 @@ export default function Auth() {
 							size="lg"
 							type="button"
 							disabled={isLoading}
-							onClick={() => {
-								window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/google`;
-							}}
+							onClick={handleGoogleSignIn}
 						>
 							<Chrome className="h-5 w-5 mr-2" />
 							Continue with Google

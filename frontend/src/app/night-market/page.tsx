@@ -22,7 +22,7 @@ export default function NightMarketPage() {
 
   useEffect(() => {
     if (!isLoading && !user) {
-      router.push('/login');
+      router.push('/login?redirect=/night-market');
     }
   }, [user, isLoading, router]);
 

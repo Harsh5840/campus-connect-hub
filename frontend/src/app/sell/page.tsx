@@ -35,7 +35,7 @@ export default function SellPage() {
 
   useEffect(() => {
     if (!isLoading && !user) {
-      router.push('/login');
+      router.push('/login?redirect=/sell');
     }
   }, [user, isLoading, router]);
 

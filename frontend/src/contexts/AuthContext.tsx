@@ -13,8 +13,8 @@ interface User {
 
 interface AuthContextType {
   user: User | null;
-  login: (email: string, password: string) => Promise<void>;
-  register: (data: { name: string; email: string; password: string }) => Promise<void>;
+  login: (email: string, password: string, redirectTo?: string) => Promise<void>;
+  register: (data: { name: string; email: string; password: string }, redirectTo?: string) => Promise<void>;
   logout: () => void;
   setTokens: (accessToken: string, refreshToken: string) => void;
   isLoading: boolean;
@@ -61,27 +61,27 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   }, []);
 
-  const login = async (email: string, password: string) => {
+  const login = async (email: string, password: string, redirectTo?: string) => {
     try {
       const response = await api.post('/auth/login', { email, password });
       const { user, accessToken, refreshToken } = response.data;
       localStorage.setItem('accessToken', accessToken);
       localStorage.setItem('refreshToken', refreshToken);
       setUser(user);
-      router.push('/marketplace');
+      router.push(redirectTo || '/marketplace');
     } catch (error: any) {
       throw new Error(error.response?.data?.error || 'Login failed');
     }
   };
 
-  const register = async (data: { name: string; email: string; password: string }) => {
+  const register = async (data: { name: string; email: string; password: string }, redirectTo?: string) => {
     try {
       const response = await api.post('/auth/register', data);
       const { user, accessToken, refreshToken } = response.data;
       localStorage.setItem('accessToken', accessToken);
       localStorage.setItem('refreshToken', refreshToken);
       setUser(user);
-      router.push('/marketplace');
+      router.push(redirectTo || '/marketplace');
     } catch (error: any) {
       throw new Error(error.response?.data?.error || 'Registration failed');
     }

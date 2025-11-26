@@ -19,13 +19,15 @@ export default function LoginPage() {
   const { login } = useAuth()
   const { toast } = useToast()
   const router = useRouter()
+  const searchParams = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '')
+  const redirectTo = searchParams.get('redirect') || '/marketplace'
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
 
     try {
-      await login(email, password)
+      await login(email, password, redirectTo)
       toast({
         title: "Login successful",
         description: "Welcome back to CampusThrift!",
@@ -57,6 +59,10 @@ export default function LoginPage() {
             className="w-full gap-2 bg-transparent" 
             size="lg"
             onClick={() => {
+              // Store redirect URL in sessionStorage for OAuth callback
+              if (redirectTo) {
+                sessionStorage.setItem('oauth_redirect', redirectTo);
+              }
               window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/google`;
             }}
           >

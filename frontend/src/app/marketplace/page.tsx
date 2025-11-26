@@ -25,7 +25,7 @@ export default function MarketplacePage() {
 
   useEffect(() => {
     if (!isLoading && !user) {
-      router.push('/login');
+      router.push('/login?redirect=/marketplace');
     }
   }, [user, isLoading, router]);
 
