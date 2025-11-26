@@ -1,10 +1,1 @@
-{
-  "/_not-found/page": "app/_not-found/page.js",
-  "/listings/[id]/page": "app/listings/[id]/page.js",
-  "/login/page": "app/login/page.js",
-  "/marketplace/page": "app/marketplace/page.js",
-  "/night-market/page": "app/night-market/page.js",
-  "/page": "app/page.js",
-  "/sell/page": "app/sell/page.js",
-  "/signup/page": "app/signup/page.js"
-}
+{}
