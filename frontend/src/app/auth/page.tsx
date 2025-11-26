@@ -70,6 +70,9 @@ export default function Auth() {
 							size="lg"
 							type="button"
 							disabled={isLoading}
+							onClick={() => {
+								window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/google`;
+							}}
 						>
 							<Chrome className="h-5 w-5 mr-2" />
 							Continue with Google
