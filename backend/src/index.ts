@@ -18,6 +18,7 @@ import listingRoutes from './routes/listings';
 import borrowRoutes from './routes/borrow';
 import nightMarketRoutes from './routes/nightMarket';
 import shareRoutes from './routes/share';
+import aiRoutes from './routes/ai';
 import { prisma } from './lib/prisma';
 
 const app = express();
@@ -48,6 +49,7 @@ app.use('/listings', listingRoutes);
 app.use('/borrow', borrowRoutes);
 app.use('/night-market', nightMarketRoutes);
 app.use('/share', shareRoutes);
+app.use('/ai', aiRoutes);
 
 // Health check
 app.get('/health', (req, res) => {

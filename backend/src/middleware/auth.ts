@@ -7,6 +7,11 @@ export interface AuthRequest extends Request {
   user?: any;
 }
 
+export const protect = (req: AuthRequest, res: Response, next: NextFunction) => {
+  // Implementation of protect middleware
+  next();
+};
+
 export const verifyToken = async (
   req: AuthRequest,
   res: Response,

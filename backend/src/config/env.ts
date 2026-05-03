@@ -16,6 +16,7 @@ const envSchema = z.object({
   CLOUDINARY_API_SECRET: z.string().optional(),
   MAX_FILE_SIZE: z.string().transform(Number).default("5242880"),
   UPLOAD_DEST: z.string().default('public/uploads'),
+  GROQ_API_KEY: z.string(),
 });
 
 export const env = envSchema.parse(process.env);

@@ -12,7 +12,7 @@ import { Label } from "@/src/components/ui/label"
 import { Textarea } from "@/src/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/src/components/ui/select"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/src/components/ui/card"
-import { Upload, X } from "lucide-react"
+import { Upload, X, Wand2 } from "lucide-react"
 import Link from "next/link"
 import api from "@/src/lib/api"
 import { useToast } from "@/src/hooks/use-toast"
@@ -23,6 +23,7 @@ export default function SellPage() {
   const { toast } = useToast();
   const [images, setImages] = useState<string[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isGenerating, setIsGenerating] = useState(false)
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -68,6 +69,37 @@ export default function SellPage() {
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }))
+  }
+
+  const handleGenerateDescription = async () => {
+    if (!formData.title) {
+      toast({
+        title: "Title is required",
+        description: "Please enter a title before generating a description.",
+        variant: "destructive",
+      })
+      return
+    }
+
+    setIsGenerating(true)
+    try {
+      const response = await api.post('/ai/generate-description', { title: formData.title })
+      if (response.data.description) {
+        handleInputChange('description', response.data.description)
+        toast({
+          title: "Description generated!",
+          description: "The AI has generated a description for your item.",
+        })
+      }
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.response?.data?.error || "Failed to generate description. Please try again.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsGenerating(false)
+    }
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -169,7 +201,19 @@ export default function SellPage() {
 
                 {/* Description */}
                 <div className="space-y-2">
-                  <Label htmlFor="description">Description</Label>
+                  <div className="flex items-center justify-between">
+                    <Label htmlFor="description">Description</Label>
+                    <Button 
+                      type="button" 
+                      variant="outline" 
+                      size="sm" 
+                      onClick={handleGenerateDescription}
+                      disabled={!formData.title || isGenerating}
+                    >
+                      <Wand2 className="mr-2 h-4 w-4" />
+                      {isGenerating ? 'Generating...' : 'Generate with AI'}
+                    </Button>
+                  </div>
                   <Textarea
                     id="description"
                     placeholder="Describe your item, its condition, and any other relevant details..."
@@ -177,6 +221,7 @@ export default function SellPage() {
                     value={formData.description}
                     onChange={(e) => handleInputChange('description', e.target.value)}
                     required
+                    disabled={isGenerating}
                   />
                 </div>
 
@@ -184,7 +229,7 @@ export default function SellPage() {
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="category">Category</Label>
-                    <Select value={formData.category} onValueChange={(value) => handleInputChange('category', value)} required>
+                    <Select value={formData.category} onValueChange={(value: string) => handleInputChange('category', value)} required>
                       <SelectTrigger id="category">
                         <SelectValue placeholder="Select category" />
                       </SelectTrigger>
@@ -201,7 +246,7 @@ export default function SellPage() {
 
                   <div className="space-y-2">
                     <Label htmlFor="condition">Condition</Label>
-                    <Select value={formData.condition} onValueChange={(value) => handleInputChange('condition', value)} required>
+                    <Select value={formData.condition} onValueChange={(value: string) => handleInputChange('condition', value)} required>
                       <SelectTrigger id="condition">
                         <SelectValue placeholder="Select condition" />
                       </SelectTrigger>
@@ -232,7 +277,7 @@ export default function SellPage() {
 
                   <div className="space-y-2">
                     <Label htmlFor="location">Location / Hostel</Label>
-                    <Select value={formData.location} onValueChange={(value) => handleInputChange('location', value)} required>
+                    <Select value={formData.location} onValueChange={(value: string) => handleInputChange('location', value)} required>
                       <SelectTrigger id="location">
                         <SelectValue placeholder="Select location" />
                       </SelectTrigger>
