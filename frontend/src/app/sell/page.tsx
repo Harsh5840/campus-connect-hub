@@ -205,7 +205,7 @@ export default function SellPage() {
                     <Label htmlFor="description">Description</Label>
                     <Button 
                       type="button" 
-                      variant="outline" 
+                      variant="default" 
                       size="sm" 
                       onClick={handleGenerateDescription}
                       disabled={!formData.title || isGenerating}
