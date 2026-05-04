@@ -12,7 +12,7 @@ export const generateDescription = async (title: string): Promise<string> => {
           content: `Generate a compelling and descriptive text for a product listing with the title: "${title}".`,
         },
       ],
-      model: "llama3-8b-8192",
+      model: "llama-3.3-70b-versatile",
     });
 
     return chatCompletion.choices[0]?.message?.content || "";
